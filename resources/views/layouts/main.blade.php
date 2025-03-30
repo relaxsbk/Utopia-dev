@@ -16,7 +16,7 @@
     <x-header />
 </header>
 
-<main class="flex-grow-1 mt-5 mb-5">
+<main class="flex-grow-1 mt-1 mb-1">
     @yield('main')
 </main>
 
