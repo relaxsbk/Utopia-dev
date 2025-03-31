@@ -31,7 +31,7 @@
                     <label for="remember">Запомнить меня</label>
                 </div>
                 <button type="submit">Войти</button>
-                <small>У вас нет аккаунта? <a href="{   {route('register')}}">Зарегистрироваться</a></small>
+                <small>У вас нет аккаунта? <a href="{{route('register')}}">Зарегистрироваться</a></small>
             </form>
         </div>
 

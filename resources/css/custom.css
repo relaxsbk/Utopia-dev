@@ -729,7 +729,6 @@ footer {
 .login-right img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
     display: block;
     border-radius: 0 24px 24px 0;
 }
@@ -749,13 +748,6 @@ footer {
     align-items: center;
     background: #fff;
     padding: 20px;
-}
-
-.login-right img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 0 24px 24px 0;
 }
 
 .login-left h2 {

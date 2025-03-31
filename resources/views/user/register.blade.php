@@ -30,7 +30,7 @@
                     <input type="text" name="phone" placeholder="Номер телефона" required />
                     <input type="password" name="password" placeholder="Пароль" required />
                     <input type="password" name="password_confirm" placeholder="Подтверждение пароля" required />
-                    <button type="submit">Войти</button>
+                    <button type="submit">Зарегистрироваться</button>
                     <small>У вас уже есть аккаунт? <a href="{{route('login')}}">Авторизоваться</a></small>
                 </form>
             </div>
