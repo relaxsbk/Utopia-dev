@@ -2,6 +2,16 @@
 @section('title', 'Список NAME')
 
 @section('main')
+    <div class="container py-3 mt-4">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{route('home')}}">Главная</a></li>
+                <li class="breadcrumb-item"><a href="{{route('catalog')}}">Каталог</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Мягкие игрушки</li>
+            </ol>
+        </nav>
+    </div>
+
     <div class="container">
         <div class="row">
 
@@ -80,7 +90,7 @@
 
                     <!-- Карточки товаров -->
                     <div class="product-card">
-                        <img src="photo/мягкая-игрушка-1.png" alt="Мягкие игрушки">
+                        <img src="{{asset('storage/static/photo/мягкая-игрушка-1.png')}}" alt="Мягкие игрушки">
                         <div class="product-body">
                             <div class="product-title">Мяго-кот</div>
                             <div class="product-category">Мягкие игрушки</div>
@@ -90,7 +100,7 @@
                     </div>
 
                     <div class="product-card">
-                        <img src="photo/мягкая-игрушка-2.png" alt="Мягкие игрушки">
+                        <img src="{{asset('storage/static/photo/мягкая-игрушка-2.png')}}" alt="Мягкие игрушки">
                         <div class="product-body">
                             <div class="product-title">Ёнотик</div>
                             <div class="product-category">Мягкие игрушки</div>
@@ -100,7 +110,7 @@
                     </div>
 
                     <div class="product-card">
-                        <img src="photo/мягкая-игрушка-3.png" alt="Мягкие игрушки">
+                        <img src="{{asset('storage/static/photo/мягкая-игрушка-3.png')}}" alt="Мягкие игрушки">
                         <div class="product-body">
                             <div class="product-title">Грузовичок-лев</div>
                             <div class="product-category">Мягкие игрушки</div>
@@ -110,7 +120,7 @@
                     </div>
 
                     <div class="product-card">
-                        <img src="photo/мягкая-игрушка-4.png" alt="Мягкие игрушки">
+                        <img src="{{asset('storage/static/photo/мягкая-игрушка-4.png')}}" alt="Мягкие игрушки">
                         <div class="product-body">
                             <div class="product-title">Лисичка</div>
                             <div class="product-category">Мягкие игрушки</div>
@@ -120,7 +130,7 @@
                     </div>
 
                     <div class="product-card">
-                        <img src="photo/мягкая-игрушка-5.png" alt="Мягкие игрушки">
+                        <img src="{{asset('storage/static/photo/мягкая-игрушка-5.png')}}" alt="Мягкие игрушки">
                         <div class="product-body">
                             <div class="product-title">Зайчик</div>
                             <div class="product-category">Мягкие игрушки</div>
@@ -130,7 +140,7 @@
                     </div>
 
                     <div class="product-card">
-                        <img src="photo/мягкая-игрушка-6.png" alt="Мягкие игрушки">
+                        <img src="{{asset('storage/static/photo/мягкая-игрушка-6.png')}}" alt="Мягкие игрушки">
                         <div class="product-body">
                             <div class="product-title">МАМА-акула</div>
                             <div class="product-category">Мягкие игрушки</div>
@@ -140,7 +150,7 @@
                     </div>
 
                     <div class="product-card">
-                        <img src="photo/мягкая-игрушка-7.png" alt="Мягкие игрушки">
+                        <img src="{{asset('storage/static/photo/мягкая-игрушка-7.png')}}" alt="Мягкие игрушки">
                         <div class="product-body">
                             <div class="product-title">Гонна</div>
                             <div class="product-category">Мягкие игрушки</div>
@@ -150,7 +160,7 @@
                     </div>
 
                     <div class="product-card">
-                        <img src="photo/мягкая-игрушка-8.png" alt="Мягкие игрушки">
+                        <img src="{{asset('storage/static/photo/мягкая-игрушка-8.png')}}" alt="Мягкие игрушки">
                         <div class="product-body">
                             <div class="product-title">Тоя-щенок</div>
                             <div class="product-category">Мягкие игрушки</div>

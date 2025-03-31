@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Views\CategoryController;
 use App\Http\Controllers\Views\HomeController;
+use App\Http\Controllers\Views\ProductController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name('home');
@@ -10,6 +12,14 @@ Route::controller(\App\Http\Controllers\Views\CatalogController::class)->group(f
     Route::get('/catalog', 'index')->name('catalog');
 //    TODO: Убрать на слаг
     Route::get('/catalog/1', 'show')->name('catalog.show');
+});
+
+Route::controller(CategoryController::class)->group(function () {
+    Route::get('/category/1', 'show')->name('categoryWithProducts');
+});
+
+Route::controller(ProductController::class)->group(function () {
+    Route::get('/product/1', 'show')->name('product.show');
 });
 
 //Route::get('/dashboard', function () {

@@ -10,7 +10,7 @@
                     <a href="{{route('home')}}">Главная</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
-                    <a href="{{route('catalog')}}">Каталог</a>
+                    Каталог
                 </li>
 
             </ol>

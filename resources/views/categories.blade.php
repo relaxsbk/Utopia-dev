@@ -13,9 +13,8 @@
                     <a href="{{route('catalog')}}">Каталог</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
-                    <a href="katalog.html">NAME</a>
+                    NAME
                 </li>
-
             </ol>
         </nav>
     </div>

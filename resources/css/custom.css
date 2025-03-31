@@ -828,3 +828,244 @@ footer {
         max-height: 250px;
     }
 }
+
+/*TODO: products*/
+.breadcrumb a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    transition: transform 0.3s ease;
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+.breadcrumb a:hover::after {
+    transform: scaleX(1);
+}
+
+.filter-box {
+    background: #ffffffd1;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.card {
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card img {
+    border-radius: 20px 20px 0 0;
+}
+
+.card-body {
+    text-align: center;
+}
+
+.btn-outline-primary {
+    border-radius: 20px;
+}
+
+h5, .card-text {
+    margin: 0.5rem 0;
+}
+
+.price {
+    font-weight: bold;
+    color: #2b7a4b;
+}
+
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.product-card {
+    width: calc(25% - 15px);
+    background: #ffffff35;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.232);
+    transition: transform 0.3s ease;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.product-card:hover {
+    transform: scale(1.03);
+}
+
+.product-card img {
+    width: 100%;
+    height:200px;
+    object-fit: contain;
+    background-color: #f5f5f500;
+}
+
+.product-body {
+    padding: 10px;
+}
+
+.product-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin: 5px 0;
+}
+
+.product-category {
+    font-size: 0.75rem;
+    color: #789DBC;
+}
+
+.product-price {
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #0a0c0b;
+    margin: 6px 0;
+}
+
+.product-button {
+    display: block;
+    width: 80%;
+    margin: 5px auto;
+    padding: 5px;
+    background: linear-gradient(90deg,
+    rgba(120, 157, 188, 0.6) 0%,
+    rgba(255, 227, 227, 0.6) 38%,
+    rgba(254, 249, 242, 0.6) 70.5%,
+    rgba(201, 233, 210, 0.6) 100%);
+    color: #000000;
+    font-size: 0.8rem;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 0.3s;
+    text-align: center;
+}
+
+.product-button:hover {
+    background: #789dbc96;
+}
+
+/* Адаптив для планшетов и телефонов */
+@media (max-width: 992px) {
+    .product-card {
+        width: calc(50% - 15px);
+    }
+}
+
+@media (max-width: 576px) {
+    .product-card {
+        width: 100%;
+    }
+}
+
+/*TODO: product*/
+.preview-img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.preview-img:hover {
+    transform: scale(1.05);
+}
+
+.main-image {
+    border: 4px solid white;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.product-price1 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+}
+
+.old-price1 {
+    text-decoration: line-through;
+    color: #888;
+    font-size: 18px;
+}
+
+.new-price1 {
+    color: #789dbc; /* зелёный, можно заменить */
+    font-size: 24px;
+    font-weight: bold;
+}
+.product-price1 {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.product-title1 {
+    font-weight: 600;
+    font-size: 1.8rem;
+}
+
+.product-description1 p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #444;
+}
+
+.img-thumbnail {
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.img-thumbnail:hover {
+    transform: scale(1.05);
+}
+.button {
+    transition: all 0.3s ease;
+    transform: scale(1);
+    border: none;
+    border-radius: 5px;
+    padding: 12px 24px;
+    background-color: #789dbc81;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button:hover {
+    background-color: #FEF9F2;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border: none;
+}
+
+.button:active {
+    transform: scale(0.97);
+    box-shadow: none;
+}
+
+.buttons-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    padding: 0 20px;
+}
