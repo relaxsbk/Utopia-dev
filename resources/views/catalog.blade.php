@@ -1,6 +1,117 @@
 @extends('layouts.main')
 @section('title', 'Каталог')
 
+@section('style')
+    <style>
+        /* Стили для карточек каталога */
+
+        .cards-wrapper {
+            display: grid;
+            grid-template-columns: repeat(3, 250px);
+            gap: 40px;
+            justify-content: center;
+            padding-top: 50px;
+        }
+
+        .custom-card {
+
+            overflow: hidden;
+            background-color: #ffffff4b;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            width: 200px;
+            height: 320px;
+            border-radius: 35px;
+            position: relative;
+
+        }
+
+        .custom-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .custom-card img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+        }
+
+        /* Карточки товаров */
+        .card {
+            width: 100%; /* Растягивание на всю ширину колонки */
+            max-width: 200px; /* Ограничение максимального размера */
+            margin: 0 auto; /* Выравнивание по центру */
+            overflow: hidden; /* Обрезка лишнего */
+        }
+
+        /* Изображение в карточке */
+        .card-img-top {
+            height: 250px; /* Фиксированная высота */
+            object-fit: cover; /* Обрезка и сохранение пропорций */
+        }
+
+
+        /* Фиксированные размеры карточек */
+        .custom-card {
+            width: 200px;
+            height: 320px;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        /* Изображение на всю карточку */
+        .card-img-top {
+            width: 100%;
+            object-fit: cover;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            transition: filter 0.3s ease-in-out;
+        }
+
+        /* Фон под текстом - прозрачный */
+        .custom-body {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: rgba(254, 249, 242, 0.7);
+            padding: 15px;
+            text-align: center;
+            z-index: 2;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Заголовок и текст */
+        .card-title {
+            font-size: 16px;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+            margin-bottom: 5px;
+        }
+
+
+        /* Эффект наведения */
+        .custom-card:hover {
+            transform: scale(1.05); /* Небольшое увеличение карточки */
+        }
+
+        .custom-card:hover .card-img-top {
+            filter: brightness(40%); /* Затемнение картинки */
+        }
+
+        .custom-card:hover .custom-body {
+            background: rgba(254, 249, 242, 0.6); /* Фон становится менее прозрачным */
+            bottom: 50%; /* Перемещение текста по центру */
+            transform: translateY(50%);
+        }
+    </style>
+@endsection
+
 @section('main')
     <!-- Хлебные крошки -->
     <div class="container mb-4 mt-5">

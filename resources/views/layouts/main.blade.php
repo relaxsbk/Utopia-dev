@@ -10,6 +10,7 @@
     <title>@yield('title')</title>
     @yield('meta')
 </head>
+@yield('style')
 <body class="d-flex flex-column min-vh-100">
 
 <header class="mb-4">
