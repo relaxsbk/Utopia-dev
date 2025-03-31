@@ -1,11 +1,11 @@
 @extends('layouts.main')
-@section('title', 'home')
+@section('title', 'ToyUtopia')
 
 @section('main')
     <header class="hero text-white d-flex flex-column align-items-center justify-content-center">
         <div class="container position-relative">
             <img src="{{asset('/storage/static/photo/вверх.png')}}" alt="Banner" class="hero-image"> <!-- Фоновое фото -->
-            <a href="katalog.html" class="btn custom-btn">Перейти в каталог</a>
+            <a href="{{route('catalog')}}" class="btn custom-btn btn-outline-secondary ">Перейти в каталог</a>
         </div>
     </header>
 
@@ -17,7 +17,7 @@
     <!-- СЕКЦИЯ БРЕНДОВ -->
     <section class="brand-section my-5">
         <div class="container">
-            <div class="brand-wrapper py-4 rounded-4 shadow">
+            <div class="brand-wrapper rounded-4 shadow">
                 <div class="brand-logos d-flex justify-content-around align-items-center flex-wrap gap-4">
                     <img src="{{asset('/storage/static/photo/лого весна.png')}}" alt="Весна" class="brand-logo" />
                     <img src="{{asset('/storage/static/photo/лого степ.png')}}" alt="Step Puzzle" class="brand-logo" />
@@ -37,20 +37,19 @@
         <h2 class="text-center mb-4"> 📌 Популярные категории 📌</h2>
         <div class="row text-center justify-content-center">
             <div class="col-md-4 col-lg-2">
-                <div class="card custom-card">
+                <a href="/" class="card custom-card">
                     <img src="{{asset('/storage/static/photo/лего-дом.png')}}" class="card-img-top" alt="Lego">
                     <div class="card-body custom-body">
-                        <h3 class="card-title">Lego</h3>
-                        <p class="card-text">Конструкторы</p>
+                        <h3 class="card-title text-black text-center text-wrap text-break">LEGO Конструкторы</h3>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-md-4 col-lg-2">
                 <div class="card custom-card">
                     <img src="{{asset('/storage/static/photo/робот-машина.png')}}" class="card-img-top" alt="Роботы">
                     <div class="card-body custom-body">
-                        <h3 class="card-title">Робот-машина</h3>
-                        <p class="card-text">Интерактивные игрушки</p>
+                        <h3 class="card-title">Интерактивные игрушки</h3>
+{{--                        <p class="card-text">Интерактивные игрушки</p>--}}
                     </div>
                 </div>
             </div>
@@ -58,8 +57,8 @@
                 <div class="card custom-card">
                     <img src="{{asset('/storage/static/photo/барби (2).png')}}" class="card-img-top" alt="Барби">
                     <div class="card-body custom-body">
-                        <h3 class="card-title">Барби</h3>
-                        <p class="card-text">Любимые куклы</p>
+                        <h3 class="card-title">Любимые куклы</h3>
+{{--                        <p class="card-text">Любимые куклы</p>--}}
                     </div>
                 </div>
             </div>
@@ -68,8 +67,8 @@
 {{--                    <img src="photo/шашаки.png" class="card-img-top" alt="Игровые наборы">--}}
                     <img src="{{asset('/storage/static/photo/шашаки.png')}}" class="card-img-top" alt="Игровые наборы">
                     <div class="card-body custom-body">
-                        <h3 class="card-title">Шахматы</h3>
-                        <p class="card-text">Логическая игра</p>
+                        <h3 class="card-title">Логические игры</h3>
+{{--                        <p class="card-text">Логическая игра</p>--}}
                     </div>
                 </div>
             </div>
@@ -77,8 +76,8 @@
                 <div class="card custom-card">
                     <img src="{{asset('/storage/static/photo/дом интерьер.png')}}" class="card-img-top" alt="Конструктор">
                     <div class="card-body custom-body">
-                        <h3 class="card-title">Интерьерный конструктор</h3>
-                        <p class="card-text">Создавай уютные домики</p>
+                        <h3 class="card-title">Интерьерный<br> конструктор</h3>
+{{--                        <p class="card-text">Создавай уютные домики</p>--}}
                     </div>
                 </div>
             </div>
@@ -100,7 +99,7 @@
                         <h2 class="fw-bold">Современность</h2>
                         <p>Дети могут выбирать игрушки на любой вкус - от игрушек на радиоуправлении и конструкторов до интерактивных плюшевых игрушек и компьютерных игр.
                             Наша задача помочь подобрать вам игрушку для своего ребёнка.</p>
-                        <a href="#" class="btn btn-light text-dark fw-bold ">Посмотреть каталог</a>
+                        <a href="#" class="btn btn-light  text-dark fw-bold ">Посмотреть каталог</a>
                     </div>
                 </div>
             </div>
@@ -181,7 +180,7 @@
                 <div class="image-wrapper">
                     <img src="{{asset('/storage/static/photo/приложение-будущее.png')}}" class="img-fluid rounded shadow" alt="Эксклюзивная игрушка">
                     <!-- Кнопка по центру изображения -->
-                    <a href="#" class="overlay-button">Подробнее</a>
+                    <a href="{{route('catalog')}}" class="overlay-button">Подробнее</a>
                 </div>
             </div>
         </div>

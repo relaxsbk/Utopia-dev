@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-lg fixed-top custom-navbar">
         <div class="container">
             <!-- Логотип + Название -->
-            <a class="navbar-brand d-flex align-items-center" href="prob.html">
+            <a class="navbar-brand d-flex align-items-center" href="{{route('home')}}">
                 <img src="{{asset('/storage/static/photo/лого.png')}}" alt="Логотип" class="logo-img me-2">
                 <span class="fw-bold">ToyUtopia</span>
             </a>
@@ -15,8 +15,12 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <!-- Основные ссылки -->
                 <ul class="navbar-nav ms-auto d-flex align-items-center">
-                    <li class="nav-item"><a class="nav-link" href="#">Доставка</a></li>
-                    <li class="nav-item"><a class="nav-link" href="katalog.html">Каталог</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Доставка</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('catalog')}}">Каталог</a>
+                    </li>
                 </ul>
 
                 <!-- Иконки справа -->
@@ -27,13 +31,11 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="profil.html">
+                        <a class="nav-link" href="{{route('login')}}">
                             <img src="{{asset('/storage/static/photo/v.png')}}" alt="" class="icon-img">
                         </a>
                     </li>
-                    <li class="nav-item mt-1">
-                        <a href="vhod.html" class="btn btn-outline-secondary">Вход</a>
-                    </li>
+
                 </ul>
             </div>
         </div>

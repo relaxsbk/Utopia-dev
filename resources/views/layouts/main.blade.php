@@ -12,7 +12,7 @@
 </head>
 <body class="d-flex flex-column min-vh-100">
 
-<header class="">
+<header class="mb-4">
     <x-header />
 </header>
 

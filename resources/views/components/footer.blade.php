@@ -1,5 +1,5 @@
 <div>
-    <footer class="footer">
+    <footer class="footer mt-2">
         <div class="footer-container">
             <!-- Колонка 1 -->
             <div class="footer-column">
