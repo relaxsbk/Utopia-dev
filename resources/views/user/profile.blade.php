@@ -200,8 +200,10 @@
         <div class="row justify-content-center">
             <div class="col-md-8 profile-card text-center">
                 <h4 class="fw-bold">Александр Весёлкин</h4>
+                <p class="text-muted">test@test.ru</p>
                 <p class="text-muted">+7 (912) 456-78-90</p>
                 <button class="edit-profile-button">Редактировать профиль</button>
+{{--                <button class="edit-profile-button">Перейти в панель администратора</button>--}}
                 <div class="bonus-block mb-4">🎁 Ваши бонусы: <span class="text-success">1 240</span> баллов</div>
                 <div class="mt-10">
                     <h5 class="mb-3">Любимые игрушки</h5>

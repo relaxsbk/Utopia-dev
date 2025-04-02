@@ -16,6 +16,11 @@ class Product extends Model
         'name', 'slug', 'description', 'price', 'discount', 'quantity', 'published'
     ];
 
+    public function scopePublished($query)
+    {
+        return $query->where('published', 1);
+    }
+
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);

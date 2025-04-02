@@ -10,16 +10,15 @@ Route::get('/', HomeController::class)->name('home');
 
 Route::controller(\App\Http\Controllers\Views\CatalogController::class)->group(function () {
     Route::get('/catalog', 'index')->name('catalog');
-//    TODO: Убрать на слаг
-    Route::get('/catalog/1', 'show')->name('catalog.show');
+    Route::get('/catalog/{slug}', 'show')->name('catalog.show');
 });
 
 Route::controller(CategoryController::class)->group(function () {
-    Route::get('/category/1', 'show')->name('categoryWithProducts');
+    Route::get('/category/{slug}', 'show')->name('categoryWithProducts');
 });
 
 Route::controller(ProductController::class)->group(function () {
-    Route::get('/product/1', 'show')->name('product.show');
+    Route::get('/product/{slug}', 'show')->name('product.show');
 });
 
 //Route::get('/dashboard', function () {

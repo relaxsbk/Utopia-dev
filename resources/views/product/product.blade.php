@@ -98,22 +98,14 @@
 @endsection
 
 @section('main')
-    <div class="container mb-4 mt-5">
+    <div class="container py-3 mt-4">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                    <a href="{{route('home')}}">Главная</a>
-                </li>
-                <li class="breadcrumb-item active" aria-current="page">
-                    <a href="{{route('catalog')}}">Каталог</a>
-                </li>
-                <li class="breadcrumb-item active" aria-current="page">
-                    <a href="katalog.html">Мягкие игрушки</a>
-                </li>
-
-                <li class="breadcrumb-item active" aria-current="page">
-                    Игрушка
-                </li>
+                <li class="breadcrumb-item"><a href="{{route('home')}}">Главная</a></li>
+                <li class="breadcrumb-item"><a href="{{route('catalog')}}">Каталог</a></li>
+                <li class="breadcrumb-item"><a href="{{route('catalog.show', ['slug' => $product->category->catalog->slug])}}">{{$product->category->catalog->name}}</a></li>
+                <li class="breadcrumb-item"><a href="{{route('categoryWithProducts', ['slug' => $product->category->slug])}}">{{$product->category->name}}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{$product->name}}</li>
             </ol>
         </nav>
     </div>
@@ -135,26 +127,32 @@
 
             <!-- Правая часть с информацией -->
             <div class="col-md-6">
-                <h2>Енотик</h2>
+                <h2>{{$product->name}}</h2>
                 <div class="product-price mb-3">
+{{--                    TODO: Сделать отображение дефолтной цены + если есть скидка то считать скидку--}}
                     <span class="old-price">2 500₽</span>
-                    <span class="new-price">1 900₽</span>
+                    <span class="new-price">{{$product->price}}₽</span>
                 </div>
 
                 <div class="d-flex align-items-center mb-3">
                     <label for="quantity" class="me-2">Количество:</label>
-                    <span class="text-muted ms-3">10 в наличии</span>
+                    <span class="text-muted ms-3">{{$product->quantity}} в наличии</span>
                 </div>
 
                 <div class="buttons mb-4">
+                    <button class="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                            <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"/>
+                        </svg>
+                    </button>
                     <button class="button">В КОРЗИНУ</button>
+
                 </div>
 
                 <div class="product-description mb-4">
                     <h5 class="mb-2">Описание</h5>
                     <p>
-                        Познакомьтесь с самым очаровательным жителем вашего дома — плюшевым енотом! Этот пушистик создан для объятий, уюта и хорошего настроения. Его мягкая шерстка, добрые глазки и забавные лапки моментально вызывают улыбку. Идеальный спутник для детей, стильный декор для спальни или оригинальный подарок для любимого человека. Он не шумит, не пакостит — только дарит тепло и уют.
-                        Плюшевый енот — это не просто игрушка, а настоящий друг с характером!
+                        {{$product->description}}
                     </p>
                 </div>
                 <button class="button" onclick="goBack()">⟵ Вернуться назад</button>

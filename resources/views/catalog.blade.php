@@ -133,26 +133,29 @@
 
     <!-- Карточки -->
     <div class="cards-wrapper">
-        <a href="/" class="card custom-card">
+        @foreach($catalogs as $catalog)
+            <a href="{{route('catalog.show', ['slug' => $catalog['slug']])}}" class="card custom-card">
+                            <img src="{{$catalog['image']}}" class="card-img-top" alt="Lego">
+{{--                <img src="http://yao.goguynet.jp/wp-content/uploads/sites/17/2017/12/840945.jpg" class="card-img-top" alt="Lego">--}}
+                <div class="card-body custom-body">
+                    <h3 class="card-title text-black text-center text-wrap text-break">{{$catalog['name']}}</h3>
+                </div>
+            </a>
+        @endforeach
+
+{{--        <a href="/" class="card custom-card">--}}
 {{--            <img src="{{asset('/storage/static/photo/лего-дом.png')}}" class="card-img-top" alt="Lego">--}}
-            <img src="http://yao.goguynet.jp/wp-content/uploads/sites/17/2017/12/840945.jpg" class="card-img-top" alt="Lego">
-            <div class="card-body custom-body">
-                <h3 class="card-title text-black text-center text-wrap text-break">Ясель</h3>
-            </div>
-        </a>
-        <a href="/" class="card custom-card">
+{{--            <img src="https://img.freepik.com/premium-vector/kids-playing-entertaining-moments-vector-illustration_1253202-216205.jpg?semt=ais_hybrid" class="card-img-top" alt="Lego">--}}
+{{--            <div class="card-body custom-body">--}}
+{{--                <h3 class="card-title text-black text-center text-wrap text-break">Дошкольники</h3>--}}
+{{--            </div>--}}
+{{--        </a>--}}
+{{--        <a href="/" class="card custom-card">--}}
 {{--            <img src="{{asset('/storage/static/photo/лего-дом.png')}}" class="card-img-top" alt="Lego">--}}
-            <img src="https://img.freepik.com/premium-vector/kids-playing-entertaining-moments-vector-illustration_1253202-216205.jpg?semt=ais_hybrid" class="card-img-top" alt="Lego">
-            <div class="card-body custom-body">
-                <h3 class="card-title text-black text-center text-wrap text-break">Дошкольники</h3>
-            </div>
-        </a>
-        <a href="/" class="card custom-card">
-{{--            <img src="{{asset('/storage/static/photo/лего-дом.png')}}" class="card-img-top" alt="Lego">--}}
-            <img src="https://avatars.mds.yandex.net/i?id=01aa3790705b3d460ab0434314f57c0a_l-7552315-images-thumbs&n=13" class="card-img-top" alt="Lego">
-            <div class="card-body custom-body">
-                <h3 class="card-title text-black text-center text-wrap text-break">Школьники</h3>
-            </div>
-        </a>
+{{--            <img src="https://avatars.mds.yandex.net/i?id=01aa3790705b3d460ab0434314f57c0a_l-7552315-images-thumbs&n=13" class="card-img-top" alt="Lego">--}}
+{{--            <div class="card-body custom-body">--}}
+{{--                <h3 class="card-title text-black text-center text-wrap text-break">Школьники</h3>--}}
+{{--            </div>--}}
+{{--        </a>--}}
     </div>
 @endsection

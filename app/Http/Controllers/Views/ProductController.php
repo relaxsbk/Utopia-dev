@@ -3,12 +3,18 @@
 namespace App\Http\Controllers\Views;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function show()
+    public function show($product)
     {
-        return view('product.product');
+        $product = Product::query()
+            ->where('slug', $product)
+            ->published()
+            ->first();
+
+        return view('product.product', compact('product'));
     }
 }

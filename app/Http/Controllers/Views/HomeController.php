@@ -3,12 +3,35 @@
 namespace App\Http\Controllers\Views;
 
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function __invoke()
     {
-        return view('home');
+        $categories = Category::query()
+            ->select('name', 'image', 'slug')
+            ->published()
+            ->take(5)
+            ->get();
+
+        $brands = Brand::query()
+            ->select('name', 'image')
+            ->published()
+            ->take(6)
+            ->get();
+
+        $productsDiscount = Product::query()
+            ->select('name', 'slug')
+            ->published()
+            ->where('discount', '>', 0)
+            ->take(5)
+            ->get();
+
+
+        return view('home', compact('categories', 'productsDiscount', 'brands'));
     }
 }

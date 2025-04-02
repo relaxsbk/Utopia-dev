@@ -576,51 +576,53 @@
     <section class="container my-5">
         <h2 class="text-center mb-4"> 📌 Популярные категории 📌</h2>
         <div class="row text-center justify-content-center">
-            <div class="col-md-4 col-lg-2">
-                <a href="/" class="card custom-card">
-                    <img src="{{asset('/storage/static/photo/лего-дом.png')}}" class="card-img-top" alt="Lego">
-                    <div class="card-body custom-body">
-                        <h3 class="card-title text-black text-center text-wrap text-break">LEGO Конструкторы</h3>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4 col-lg-2">
-                <div class="card custom-card">
-                    <img src="{{asset('/storage/static/photo/робот-машина.png')}}" class="card-img-top" alt="Роботы">
-                    <div class="card-body custom-body">
-                        <h3 class="card-title">Интерактивные игрушки</h3>
+           @foreach($categories as $category)
+                <div class="col-md-4 col-lg-2">
+                    <a href="{{route('categoryWithProducts', ['slug' => $category['slug']])}}" class="card custom-card">
+                        <img src="{{asset('/storage/static/photo/лего-дом.png')}}" class="card-img-top" alt="Lego">
+                        <div class="card-body custom-body">
+                            <h3 class="card-title text-black text-center text-wrap text-break">{{$category['name']}}</h3>
+                        </div>
+                    </a>
+                </div>
+           @endforeach
+{{--            <div class="col-md-4 col-lg-2">--}}
+{{--                <div class="card custom-card">--}}
+{{--                    <img src="{{asset('/storage/static/photo/робот-машина.png')}}" class="card-img-top" alt="Роботы">--}}
+{{--                    <div class="card-body custom-body">--}}
+{{--                        <h3 class="card-title">Интерактивные игрушки</h3>--}}
 {{--                        <p class="card-text">Интерактивные игрушки</p>--}}
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-lg-2">
-                <div class="card custom-card">
-                    <img src="{{asset('/storage/static/photo/барби (2).png')}}" class="card-img-top" alt="Барби">
-                    <div class="card-body custom-body">
-                        <h3 class="card-title">Любимые куклы</h3>
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="col-md-4 col-lg-2">--}}
+{{--                <div class="card custom-card">--}}
+{{--                    <img src="{{asset('/storage/static/photo/барби (2).png')}}" class="card-img-top" alt="Барби">--}}
+{{--                    <div class="card-body custom-body">--}}
+{{--                        <h3 class="card-title">Любимые куклы</h3>--}}
 {{--                        <p class="card-text">Любимые куклы</p>--}}
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-lg-2">
-                <div class="card custom-card">
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="col-md-4 col-lg-2">--}}
+{{--                <div class="card custom-card">--}}
 {{--                    <img src="photo/шашаки.png" class="card-img-top" alt="Игровые наборы">--}}
-                    <img src="{{asset('/storage/static/photo/шашаки.png')}}" class="card-img-top" alt="Игровые наборы">
-                    <div class="card-body custom-body">
-                        <h3 class="card-title">Логические игры</h3>
+{{--                    <img src="{{asset('/storage/static/photo/шашаки.png')}}" class="card-img-top" alt="Игровые наборы">--}}
+{{--                    <div class="card-body custom-body">--}}
+{{--                        <h3 class="card-title">Логические игры</h3>--}}
 {{--                        <p class="card-text">Логическая игра</p>--}}
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-lg-2">
-                <div class="card custom-card">
-                    <img src="{{asset('/storage/static/photo/дом интерьер.png')}}" class="card-img-top" alt="Конструктор">
-                    <div class="card-body custom-body">
-                        <h3 class="card-title">Интерьерный<br> конструктор</h3>
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="col-md-4 col-lg-2">--}}
+{{--                <div class="card custom-card">--}}
+{{--                    <img src="{{asset('/storage/static/photo/дом интерьер.png')}}" class="card-img-top" alt="Конструктор">--}}
+{{--                    <div class="card-body custom-body">--}}
+{{--                        <h3 class="card-title">Интерьерный<br> конструктор</h3>--}}
 {{--                        <p class="card-text">Создавай уютные домики</p>--}}
-                    </div>
-                </div>
-            </div>
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
         </div>
     </section>
 
