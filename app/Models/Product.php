@@ -13,7 +13,7 @@ class Product extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'slug', 'description', 'price', 'quantity', 'published'
+        'name', 'slug', 'description', 'price', 'discount', 'quantity', 'published'
     ];
 
     public function category(): BelongsTo
