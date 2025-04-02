@@ -103,8 +103,8 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{route('home')}}">Главная</a></li>
                 <li class="breadcrumb-item"><a href="{{route('catalog')}}">Каталог</a></li>
-                <li class="breadcrumb-item"><a href="{{route('catalog.show', ['slug' => $product->category->catalog->slug])}}">{{$product->category->catalog->name}}</a></li>
-                <li class="breadcrumb-item"><a href="{{route('categoryWithProducts', ['slug' => $product->category->slug])}}">{{$product->category->name}}</a></li>
+                <li class="breadcrumb-item"><a href="{{route('catalog.show', $product->category->catalog)}}">{{$product->category->catalog->name}}</a></li>
+                <li class="breadcrumb-item"><a href="{{route('categoryWithProducts', $product->category)}}">{{$product->category->name}}</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{$product->name}}</li>
             </ol>
         </nav>

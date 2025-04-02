@@ -134,11 +134,11 @@
     <!-- Карточки -->
     <div class="cards-wrapper">
         @foreach($catalogs as $catalog)
-            <a href="{{route('catalog.show', ['slug' => $catalog['slug']])}}" class="card custom-card">
-                            <img src="{{$catalog['image']}}" class="card-img-top" alt="Lego">
+            <a href="{{route('catalog.show', $catalog)}}" class="card custom-card">
+                            <img src="{{$catalog->image}}" class="card-img-top" alt="Lego">
 {{--                <img src="http://yao.goguynet.jp/wp-content/uploads/sites/17/2017/12/840945.jpg" class="card-img-top" alt="Lego">--}}
                 <div class="card-body custom-body">
-                    <h3 class="card-title text-black text-center text-wrap text-break">{{$catalog['name']}}</h3>
+                    <h3 class="card-title text-black text-center text-wrap text-break">{{$catalog->name}}</h3>
                 </div>
             </a>
         @endforeach

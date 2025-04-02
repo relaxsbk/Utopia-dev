@@ -167,7 +167,7 @@
     <!-- Карточки -->
     <div class="cards-wrapper">
         @foreach($categories as $category)
-            <a href="{{route('categoryWithProducts', ['slug'=> $category->slug])}}" class="card custom-card">
+            <a href="{{route('categoryWithProducts', $category)}}" class="card custom-card">
                 <img src="{{asset('storage/static/photo/кар-каталог-1.webp')}}" alt="{{$category->name}}">
                 <div class="card-footer">{{$category->name}}</div>
             </a>

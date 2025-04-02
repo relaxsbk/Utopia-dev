@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Views;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Catalog\CatalogResource;
 use App\Models\Catalog;
 use Illuminate\Http\Request;
 
@@ -17,16 +18,16 @@ class CatalogController extends Controller
         return view('catalog', compact('catalogs'));
     }
 
-    public function show($catalog)
+    public function show(Catalog $catalog)
     {
-//      :TODO  Потом изменить на другой поиск (если возможно пользоваться ресурсами)
-        $catalog = Catalog::query()
+//      :TODO Сделать отображение только доступных через эксепшен
+        $categories = $catalog->categories()
             ->published()
-            ->where('slug', $catalog)
-            ->firstOrFail();
+            ->paginate(6);
 
-        $categories = $catalog->categories()->published()->paginate(6);
-
-        return view('categories', compact('catalog', 'categories'));
+        return view('categories', [
+            'catalog' => new CatalogResource($catalog),
+            'categories' => $categories,
+        ]);
     }
 }

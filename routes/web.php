@@ -10,15 +10,15 @@ Route::get('/', HomeController::class)->name('home');
 
 Route::controller(\App\Http\Controllers\Views\CatalogController::class)->group(function () {
     Route::get('/catalog', 'index')->name('catalog');
-    Route::get('/catalog/{slug}', 'show')->name('catalog.show');
+    Route::get('/catalog/{catalog:slug}', 'show')->name('catalog.show');
 });
 
 Route::controller(CategoryController::class)->group(function () {
-    Route::get('/category/{slug}', 'show')->name('categoryWithProducts');
+    Route::get('/category/{category:slug}', 'show')->name('categoryWithProducts');
 });
 
 Route::controller(ProductController::class)->group(function () {
-    Route::get('/product/{slug}', 'show')->name('product.show');
+    Route::get('/product/{product:slug}', 'show')->name('product.show');
 });
 
 //Route::get('/dashboard', function () {

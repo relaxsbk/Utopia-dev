@@ -112,7 +112,7 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{route('home')}}">Главная</a></li>
                 <li class="breadcrumb-item"><a href="{{route('catalog')}}">Каталог</a></li>
-                <li class="breadcrumb-item"><a href="{{route('catalog.show', ['slug' => $category->catalog->slug])}}">{{$category->catalog->name}}</a></li>
+                <li class="breadcrumb-item"><a href="{{route('catalog.show', $category->catalog)}}">{{$category->catalog->name}}</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{$category->name}}</li>
             </ol>
         </nav>
@@ -155,7 +155,7 @@
                                 <div class="product-title">{{$product->name}}</div>
                                 <div class="product-category">{{$product->category->name}}</div>
                                 <div class="product-price">{{$product->price}} ₽</div>
-                                <a href="{{route('product.show', ['slug' => $product->slug])}}" class="product-button">Перейти к товару</a>
+                                <a href="{{route('product.show', $product)}}" class="product-button">Перейти к товару</a>
                             </div>
                         </div>
                   @endforeach

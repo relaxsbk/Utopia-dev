@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Views;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Category\MiniCategoryResource;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
@@ -32,6 +33,10 @@ class HomeController extends Controller
             ->get();
 
 
-        return view('home', compact('categories', 'productsDiscount', 'brands'));
+        return view('home', [
+            'categories' => MiniCategoryResource::collection($categories),
+            'brands' => $brands,
+            'productsDiscount' => $productsDiscount,
+        ]);
     }
 }
