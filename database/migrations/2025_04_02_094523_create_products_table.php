@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->text('description');
             $table->integer('price');
+            $table->integer('discount');
             $table->integer('quantity');
             $table->boolean('published')->default(false);
             $table->timestamps();
