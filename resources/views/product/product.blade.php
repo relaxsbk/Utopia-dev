@@ -1,5 +1,6 @@
 @extends('layouts.main')
-@section('title', 'NAME')
+@section('title', 'Купить'. ' ' . $product->name . ' | '.' '.'ToyUtopia')
+
 
 @section('style')
     <style>
@@ -128,11 +129,16 @@
             <!-- Правая часть с информацией -->
             <div class="col-md-6">
                 <h2>{{$product->name}}</h2>
-                <div class="product-price mb-3">
-{{--                    TODO: Сделать отображение дефолтной цены + если есть скидка то считать скидку--}}
-                    <span class="old-price">2 500₽</span>
-                    <span class="new-price">{{$product->price}}₽</span>
-                </div>
+                @if($product->discount > 0)
+                    <div class="product-price mb-3">
+                        <span class="old-price">{{$product->money()}} ₽</span>
+                        <span class="new-price">{{$product->priceDiscount()}} ₽</span>
+                    </div>
+                @else
+                    <div class="product-price mb-3">
+                        <span class="new-price">{{$product->money()}} ₽</span>
+                    </div>
+                @endif
 
                 <div class="d-flex align-items-center mb-3">
                     <label for="quantity" class="me-2">Количество:</label>

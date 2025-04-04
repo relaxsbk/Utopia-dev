@@ -12,7 +12,6 @@ class ProductController extends Controller
     {
         $product = Product::query()
             ->where('slug', $product)
-            ->published()
             ->first();
 
         return view('product.product', compact('product'));

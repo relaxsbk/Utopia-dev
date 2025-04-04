@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title', 'Категории')
+@section('title', $catalog->name . ' | '.' '.'ToyUtopia')
 
 @section('style')
     <style>

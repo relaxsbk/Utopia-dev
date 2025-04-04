@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title', 'Список NAME')
+@section('title', $category->name . ' | '.' '.'ToyUtopia')
 
 @section('style')
     <style>
@@ -149,15 +149,7 @@
 
                   @foreach($products as $product)
                         <!-- Карточки товаров -->
-                        <div class="product-card">
-                            <img src="{{asset('storage/static/photo/мягкая-игрушка-1.png')}}" alt="{{$product->name}}">
-                            <div class="product-body">
-                                <div class="product-title">{{$product->name}}</div>
-                                <div class="product-category">{{$product->category->name}}</div>
-                                <div class="product-price">{{$product->price}} ₽</div>
-                                <a href="{{route('product.show', $product)}}" class="product-button">Перейти к товару</a>
-                            </div>
-                        </div>
+                        <x-product-card :product="$product"/>
                   @endforeach
 
 {{--                    <div class="product-card">--}}

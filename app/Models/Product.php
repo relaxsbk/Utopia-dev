@@ -21,6 +21,16 @@ class Product extends Model
         return $query->where('published', 1);
     }
 
+    public function money(): string
+    {
+        return number_format($this->price, 0, '', ' ');
+    }
+
+    public function priceDiscount(): string
+    {
+        return number_format($this->price - ($this->price * ($this->discount / 100)), 0, '', ' ');
+    }
+
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
