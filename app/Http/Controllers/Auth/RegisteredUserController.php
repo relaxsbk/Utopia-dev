@@ -30,7 +30,7 @@ class RegisteredUserController extends Controller
      */
     public function store(RegisterRequest $request): RedirectResponse
     {
-
+//        dd($request->validated());
         $user = User::create($request->validated());
 
 //        event(new Registered($user));

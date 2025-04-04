@@ -161,13 +161,14 @@
             <div class="login-left">
                 <h2>ToyUtopia</h2>
 
-                <form>
+                <form action="{{route('register.store')}}" method="post">
+                    @csrf
                     <input type="text" name="firstName" placeholder="Имя" required />
                     <input type="text" name="lastName" placeholder="Фамилия" required />
                     <input type="email" name="email" placeholder="Электронная почта" required />
                     <input type="text" name="phone" placeholder="Номер телефона" required />
                     <input type="password" name="password" placeholder="Пароль" required />
-                    <input type="password" name="password_confirm" placeholder="Подтверждение пароля" required />
+                    <input type="password" name="password_confirmation" placeholder="Подтверждение пароля" required />
                     <button type="submit">Зарегистрироваться</button>
                     <small>У вас уже есть аккаунт? <a href="{{route('login')}}">Авторизоваться</a></small>
                 </form>
