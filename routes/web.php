@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\User\FavoriteController;
 use App\Http\Controllers\Views\CategoryController;
 use App\Http\Controllers\Views\HomeController;
 use App\Http\Controllers\Views\ProductController;
@@ -25,6 +26,12 @@ Route::controller(ProductController::class)->group(function () {
 //    return view('dashboard');
 //})->middleware(['auth', 'verified'])->name('dashboard');
 //
+
+Route::controller(FavoriteController::class)->middleware(['auth'])->group(function () {
+    Route::post('/favorite/add/{product:id}', 'addToFavorite')->name('addToFavorite');
+    Route::delete('/favorite/remove/{product:id}', 'removeFromFavorites')->name('removeFromFavorites');
+});
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

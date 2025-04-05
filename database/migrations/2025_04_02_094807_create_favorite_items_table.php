@@ -18,9 +18,10 @@ return new class extends Migration
                 ->constrained('favorites')
                 ->cascadeOnDelete();
 
-            $table->foreignId('user_id')
-                ->constrained('users')
+            $table->foreignId('product_id')
+                ->constrained('products')
                 ->cascadeOnDelete();
+
 
             $table->timestamps();
         });
