@@ -72,17 +72,17 @@
             text-align: center;
         }
 
-        .login-left input[type="text"],
-        .login-left input[type="email"],
-        .login-left input[type="password"] {
-            width: 100%;
-            padding: 14px;
-            margin-bottom: 16px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            background: #ffe88d;
-            font-size: 16px;
-        }
+        /*.login-left input[type="text"],*/
+        /*.login-left input[type="email"],*/
+        /*.login-left input[type="password"] {*/
+        /*    width: 100%;*/
+        /*    padding: 14px;*/
+        /*    margin-bottom: 16px;*/
+        /*    border: 1px solid #ccc;*/
+        /*    border-radius: 10px;*/
+        /*    background: #ffe88d;*/
+        /*    font-size: 16px;*/
+        /*}*/
 
         .checkbox-container {
             display: flex;
@@ -170,8 +170,22 @@
 
             <form action="{{route('login.store')}}" method="post">
                 @csrf
-                <input type="email" name="email" placeholder="Электронная почта" required />
-                <input type="password" name="password" placeholder="Пароль" required />
+                <div class="mb-3">
+                    <input style="padding: 14px" type="email" name="email" value="{{old('email')}}" class="form-control @error('email') is-invalid @enderror" placeholder="Электронная почта" required />
+                    @error('email')
+                        <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                            {{$message}}
+                        </div>
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    <input style="padding: 14px" type="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Пароль" required />
+                    @error('password')
+                    <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                        {{$message}}
+                    </div>
+                    @enderror
+                </div>
                 <div class="checkbox-container">
                     <input type="checkbox" name="remember" id="remember">
                     <label for="remember">Запомнить меня</label>
