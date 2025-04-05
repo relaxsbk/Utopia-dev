@@ -168,7 +168,8 @@
         <div class="login-left">
             <h2>ToyUtopia</h2>
 
-            <form>
+            <form action="{{route('login.store')}}" method="post">
+                @csrf
                 <input type="email" name="email" placeholder="Электронная почта" required />
                 <input type="password" name="password" placeholder="Пароль" required />
                 <div class="checkbox-container">
