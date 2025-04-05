@@ -204,7 +204,62 @@
                 <p class="text-muted">{{auth()->user()->phone}}</p>
                 <div class="d-flex justify-content-center gap-2">
 {{--                                    <button class="edit-profile-button">Перейти в панель администратора</button>--}}
-                    <button class="edit-profile-button">Редактировать профиль</button>
+{{--                    <button class="edit-profile-button">Редактировать профиль</button>--}}
+                    <button type="button" class="edit-profile-button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Редактировать профиль
+                    </button>
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Редактирование профиля</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <form id="edit" action="*" method="post">
+                                    <div class="modal-body text-start">
+                                        @csrf
+                                        <div class="mb-3">
+                                            <input style="padding: 14px" type="text" name="firstName" value="{{auth()->user()->firstName}}" class="form-control  @error('firstName') is-invalid @enderror" placeholder="Имя" required />
+                                            @error('firstName')
+                                            <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                                {{$message}}
+                                            </div>
+                                            @enderror
+                                        </div>
+                                        <div class="mb-3">
+                                            <input style="padding: 14px" type="text" name="lastName" value="{{auth()->user()->lastName}}" class="form-control  @error('lastName') is-invalid @enderror" placeholder="Фамилия" required />
+                                            @error('lastName')
+                                            <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                                {{$message}}
+                                            </div>
+                                            @enderror
+                                        </div>
+                                        <div class="mb-3">
+                                            <input style="padding: 14px" type="email" name="email" value="{{auth()->user()->email}}" class="form-control  @error('email') is-invalid @enderror" placeholder="Электронная почта" required />
+                                            @error('email')
+                                            <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                                {{$message}}
+                                            </div>
+                                            @enderror
+                                        </div>
+                                        <div class="mb-3">
+                                            <input style="padding: 14px" type="text" name="phone" value="{{auth()->user()->phone}}" class="form-control  @error('phone') is-invalid @enderror" placeholder="Номер телефона" required />
+                                            @error('phone')
+                                            <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                                {{$message}}
+                                            </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit"  class="btn btn-primary">Сохранить изменения</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+
 
                     <form action="{{route('logout')}}" method="post">
                         @csrf
