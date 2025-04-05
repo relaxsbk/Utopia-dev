@@ -202,45 +202,54 @@
                 <h4 class="fw-bold">{{auth()->user()->firstName}} {{auth()->user()->lastName}}</h4>
                 <p class="text-muted">{{auth()->user()->email}}</p>
                 <p class="text-muted">{{auth()->user()->phone}}</p>
-                <button class="edit-profile-button">Редактировать профиль</button>
-{{--                <button class="edit-profile-button">Перейти в панель администратора</button>--}}
-                <form action="{{route('logout')}}" method="post">
-                    @csrf
-                    <button type="submit" class="edit-profile-button">Выход</button>
-                </form>
+                <div class="d-flex justify-content-center gap-2">
+{{--                                    <button class="edit-profile-button">Перейти в панель администратора</button>--}}
+                    <button class="edit-profile-button">Редактировать профиль</button>
+
+                    <form action="{{route('logout')}}" method="post">
+                        @csrf
+                        <button type="submit" class="edit-profile-button">Выход</button>
+                    </form>
+                </div>
                 <div class="bonus-block mb-4">🎁 Ваши бонусы: <span class="text-success">1 240</span> баллов</div>
                 <div class="mt-10">
-                    <h5 class="mb-3">Любимые игрушки</h5>
+                    <h5 class="mb-3 fw-bolder">Любимые игрушки</h5>
                     <div class="row g-3">
-                        <div class="col-md-4">
-                            <div class="favorite-toys-container">
-                                <div class="card-k">
-                                    <img src="{{asset('storage/static/photo/опыти и экспереметы.png')}}" class="card-k-img-top" alt="Игровые наборы">
-                                    <div class="card-k-body">
-                                        <h6 class="card-k-title">Опыты и эксперименты</h6>
-                                        <div class="category">Категория: Игровые наборы</div>
+                        @if($favoriteProducts->isEmpty())
+                            <p class="text-black text-center fs-4 ">Вы пока не добавляли товар в избранное 😥</p>
+                        @else
+                            @foreach($favoriteProducts as $product)
+                                <a href="{{route('product.show', $product)}}" class="col-md-4 text-decoration-none text-black">
+                                    <div class="favorite-toys-container">
+                                        <div class="card-k">
+                                            <img src="{{asset('storage/static/photo/опыти и экспереметы.png')}}" class="card-k-img-top" alt="Игровые наборы">
+                                            <div class="card-k-body">
+                                                <h6 class="card-k-title">{{$product->name}}</h6>
+                                                <div class="category">Категория: {{$product->category->name}}</div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card-k">
-                                <img src="{{asset('storage/static/photo/настольная игра.png')}}" class="card-k-img-top" alt="Развивающие игрушки">
-                                <div class="card-k-body">
-                                    <h6 class="card-k-title">Настольная игра Три Кота</h6>
-                                    <div class="category">Категория:Развивающие игрушки</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card-k">
-                                <img src="{{asset('storage/static/photo/набор новорожденного.png')}}" class="card-k-img-top" alt="Игровые наборы">
-                                <div class="card-k-body">
-                                    <h6 class="card-k-title">Подарочный набор для новорожденного</h6>
-                                    <div class="category">Категория: Игровые наборы</div>
-                                </div>
-                            </div>
-                        </div>
+                                </a>
+                            @endforeach
+                        @endif
+{{--                        <div class="col-md-4">--}}
+{{--                            <div class="card-k">--}}
+{{--                                <img src="{{asset('storage/static/photo/настольная игра.png')}}" class="card-k-img-top" alt="Развивающие игрушки">--}}
+{{--                                <div class="card-k-body">--}}
+{{--                                    <h6 class="card-k-title">Настольная игра Три Кота</h6>--}}
+{{--                                    <div class="category">Категория:Развивающие игрушки</div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="col-md-4">--}}
+{{--                            <div class="card-k">--}}
+{{--                                <img src="{{asset('storage/static/photo/набор новорожденного.png')}}" class="card-k-img-top" alt="Игровые наборы">--}}
+{{--                                <div class="card-k-body">--}}
+{{--                                    <h6 class="card-k-title">Подарочный набор для новорожденного</h6>--}}
+{{--                                    <div class="category">Категория: Игровые наборы</div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                     </div>
                 </div>
 
@@ -255,60 +264,62 @@
         <!-- Категории товаров -->
         <section class="container my-5">
             <div class="row text-center justify-content-center">
-                <div class="col-md-4 col-lg-2">
-                    <div class="card custom-card">
-                        <img src="{{asset('storage/static/photo/кар-каталог-1.webp')}}" class="card-img-top" alt="Мягкие игрушки">
-                        <div class="card-body custom-body">
-                            <h3 class="card-title">Мягкие игрушки</h3>
+                @foreach($categories as $category)
+                    <div class="col-md-4 col-lg-2">
+                        <a href="{{route('categoryWithProducts', $category)}}" class="card custom-card text-black text-decoration-none">
+                            <img src="{{asset('storage/static/photo/кар-каталог-1.webp')}}" class="card-img-top" alt="Мягкие игрушки">
+                            <div class="card-body custom-body">
+                                <h3 class="card-title">{{$category->name}}</h3>
 
-                        </div>
+                            </div>
+                        </a>
                     </div>
-                </div>
-                <div class="col-md-4 col-lg-2">
-                    <div class="card custom-card">
-                        <img src="{{asset('storage/static/photo/кар-каталог-2.webp')}}" class="card-img-top" alt="Развивающие игрушки">
-                        <div class="card-body custom-body">
-                            <h3 class="card-title">Развивающие игрушки</h3>
+                @endforeach
+{{--                <div class="col-md-4 col-lg-2">--}}
+{{--                    <div class="card custom-card">--}}
+{{--                        <img src="{{asset('storage/static/photo/кар-каталог-2.webp')}}" class="card-img-top" alt="Развивающие игрушки">--}}
+{{--                        <div class="card-body custom-body">--}}
+{{--                            <h3 class="card-title">Развивающие игрушки</h3>--}}
 
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-lg-2">
-                    <div class="card custom-card">
-                        <img src="{{asset('storage/static/photo/кар-каталог-3.webp')}}" class="card-img-top" alt="Музыкальные игрушки">
-                        <div class="card-body custom-body">
-                            <h3 class="card-title">Музыкальные игрушки</h3>
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-md-4 col-lg-2">--}}
+{{--                    <div class="card custom-card">--}}
+{{--                        <img src="{{asset('storage/static/photo/кар-каталог-3.webp')}}" class="card-img-top" alt="Музыкальные игрушки">--}}
+{{--                        <div class="card-body custom-body">--}}
+{{--                            <h3 class="card-title">Музыкальные игрушки</h3>--}}
 
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-lg-2">
-                    <div class="card custom-card">
-                        <img src="{{asset('storage/static/photo/кар-каталог-4.webp')}}" class="card-img-top" alt="Технические игрушки">
-                        <div class="card-body custom-body">
-                            <h3 class="card-title">Технические игрушки</h3>
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-md-4 col-lg-2">--}}
+{{--                    <div class="card custom-card">--}}
+{{--                        <img src="{{asset('storage/static/photo/кар-каталог-4.webp')}}" class="card-img-top" alt="Технические игрушки">--}}
+{{--                        <div class="card-body custom-body">--}}
+{{--                            <h3 class="card-title">Технические игрушки</h3>--}}
 
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-lg-2">
-                    <div class="card custom-card">
-                        <img src="{{asset('storage/static/photo/кар-каталог-5.webp')}}" class="card-img-top" alt="Подвижные игры">
-                        <div class="card-body custom-body">
-                            <h3 class="card-title">Подвижные игры</h3>
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-md-4 col-lg-2">--}}
+{{--                    <div class="card custom-card">--}}
+{{--                        <img src="{{asset('storage/static/photo/кар-каталог-5.webp')}}" class="card-img-top" alt="Подвижные игры">--}}
+{{--                        <div class="card-body custom-body">--}}
+{{--                            <h3 class="card-title">Подвижные игры</h3>--}}
 
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-lg-2">
-                    <div class="card custom-card">
-                        <img src="{{asset('storage/static/photo/кар-каталог-6.webp')}}" class="card-img-top" alt="Игровой набор">
-                        <div class="card-body custom-body">
-                            <h3 class="card-title">Игровой набор</h3>
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-md-4 col-lg-2">--}}
+{{--                    <div class="card custom-card">--}}
+{{--                        <img src="{{asset('storage/static/photo/кар-каталог-6.webp')}}" class="card-img-top" alt="Игровой набор">--}}
+{{--                        <div class="card-body custom-body">--}}
+{{--                            <h3 class="card-title">Игровой набор</h3>--}}
 
-                        </div>
-                    </div>
-                </div>
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
             </div>
         </section>
     </section>

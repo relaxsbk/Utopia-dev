@@ -31,9 +31,15 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('login')}}">
-                            <img src="{{asset('/storage/static/photo/v.png')}}" alt="" class="icon-img">
-                        </a>
+                       @if(auth()->check())
+                            <a class="nav-link" href="{{route('profile')}}">
+                                <img src="{{asset('/storage/static/photo/v.png')}}" alt="" class="icon-img">
+                            </a>
+                       @else
+                            <a class="nav-link" href="{{route('login')}}">
+                                <img src="{{asset('/storage/static/photo/v.png')}}" alt="" class="icon-img">
+                            </a>
+                       @endif
                     </li>
 
                 </ul>

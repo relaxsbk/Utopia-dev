@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Category;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,8 +15,20 @@ class ProfileController extends Controller
 
     public function edit(Request $request): View
     {
+        $user = $request->user();
+
+        $favoriteItems = $user->favorite()
+            ->with('items.product')
+            ->first();
+
+        $products = $favoriteItems ? $favoriteItems->items->pluck('product') : [];
+
+        $categories = Category::query()->published()->take(6)->get();
+
         return view('user.profile', [
-            'user' => $request->user(),
+            'user' => $user,
+            'favoriteProducts' => $products,
+            'categories' => $categories,
         ]);
     }
 
