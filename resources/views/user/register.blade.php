@@ -65,17 +65,17 @@
             text-align: center;
         }
 
-        .login-left input[type="text"],
-        .login-left input[type="email"],
-        .login-left input[type="password"] {
-            width: 100%;
-            padding: 14px;
-            margin-bottom: 16px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            background: #ffe88d;
-            font-size: 16px;
-        }
+        /*.login-left input[type="text"],*/
+        /*.login-left input[type="email"],*/
+        /*.login-left input[type="password"] {*/
+        /*    width: 100%;*/
+        /*    padding: 14px;*/
+        /*    margin-bottom: 16px;*/
+        /*    border: 1px solid #ccc;*/
+        /*    border-radius: 10px;*/
+        /*    background: #ffe88d;*/
+        /*    font-size: 16px;*/
+        /*}*/
 
         .checkbox-container {
             display: flex;
@@ -163,12 +163,54 @@
 
                 <form action="{{route('register.store')}}" method="post">
                     @csrf
-                    <input type="text" name="firstName" placeholder="Имя" required />
-                    <input type="text" name="lastName" placeholder="Фамилия" required />
-                    <input type="email" name="email" placeholder="Электронная почта" required />
-                    <input type="text" name="phone" placeholder="Номер телефона" required />
-                    <input type="password" name="password" placeholder="Пароль" required />
-                    <input type="password" name="password_confirmation" placeholder="Подтверждение пароля" required />
+                    <div class="mb-3">
+                        <input style="padding: 14px" type="text" name="firstName" value="{{old('firstName')}}" class="form-control  @error('firstName') is-invalid @enderror" placeholder="Имя" required />
+                        @error('firstName')
+                        <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                            {{$message}}
+                        </div>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <input style="padding: 14px" type="text" name="lastName" value="{{old('lastName')}}" class="form-control  @error('lastName') is-invalid @enderror" placeholder="Фамилия" required />
+                        @error('lastName')
+                        <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                            {{$message}}
+                        </div>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <input style="padding: 14px" type="email" name="email" value="{{old('email')}}" class="form-control  @error('email') is-invalid @enderror" placeholder="Электронная почта" required />
+                        @error('email')
+                        <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                            {{$message}}
+                        </div>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <input style="padding: 14px" type="text" name="phone" value="{{old('phone')}}" class="form-control  @error('phone') is-invalid @enderror" placeholder="Номер телефона" required />
+                        @error('phone')
+                        <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                            {{$message}}
+                        </div>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <input style="padding: 14px" type="password" name="password" class="form-control  @error('password') is-invalid @enderror" placeholder="Пароль" required />
+                        @error('password')
+                        <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                            {{$message}}
+                        </div>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <input style="padding: 14px" type="password" name="password_confirmation" class="form-control  @error('password_confirmation') is-invalid @enderror" placeholder="Подтверждение пароля" required />
+                        @error('password_confirmation')
+                        <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                            {{$message}}
+                        </div>
+                        @enderror
+                    </div>
                     <button type="submit">Зарегистрироваться</button>
                     <small>У вас уже есть аккаунт? <a href="{{route('login')}}">Авторизоваться</a></small>
                 </form>
