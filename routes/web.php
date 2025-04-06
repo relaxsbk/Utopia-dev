@@ -33,7 +33,7 @@ Route::controller(FavoriteController::class)->middleware(['auth'])->group(functi
     Route::delete('/favorite/remove/{product:id}', 'removeFromFavorites')->name('removeFromFavorites');
 });
 
-Route::controller(CartController::class)->group(function () {
+Route::controller(CartController::class)->middleware(['auth'])->group(function () {
     Route::get('/cart', 'index')->name('cart');
     Route::post('/cart/add/{product:id}', 'addToCart')->name('addToCart');
     Route::delete('/cart/remove/{product:id}', 'removeFromCart')->name('removeFromCart');

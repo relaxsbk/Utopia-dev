@@ -10,7 +10,9 @@ class CartController extends Controller
 {
     public function index()
     {
-        return view('basket');
+        $cart = auth()->user()->cart()->with('items.product.brand')->first();
+
+        return view('basket', compact('cart'));
     }
 
     public function addToCart(Request $request, Product $product)

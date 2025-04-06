@@ -21,63 +21,50 @@
 
         <div class="row">
             <div class="col-md-8">
-                <!-- Пример карточек товаров -->
-                <div class="card mb-3" data-price="4990">
-                    <div class="row g-0 align-items-center">
-                        <div class="col-md-3">
-                            <img src="{{asset('storage/static/photo/лего-дом.png')}}" class="img-fluid rounded-start p-2" style="width: auto; height: 10rem" alt="Product">
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card-body">
-                                <h5 class="card-title">Смартфон HyperPhone X</h5>
-                                <p class="card-text mb-1">Цена: <strong class="item-price">4990</strong> ₽</p>
-                                <p class="card-text">Бренд: HyperTech</p>
+                @forelse ($cart?->items as $item)
+                    <div class="card mb-3" data-price="{{ $item->product->priceDiscount() }}">
+                        <div class="row g-0 align-items-center">
+                            <div class="col-md-3">
+                                <img src="{{ asset('storage/static/photo/мягкая-игрушка-2-1.png') }}"
+                                     class="img-fluid rounded-start p-2"
+                                     style="width: auto; height: 10rem"
+                                     alt="{{ $item->product->name }}">
                             </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="d-flex align-items-center h-100 justify-content-center">
-                                <div class="input-group input-group-sm me-2" style="width: 110px;">
-                                    <button class="btn btn-outline-secondary btn-minus" type="button">−</button>
-                                    <input type="number" class="form-control text-center item-qty" value="1" min="1" step="int">
-                                    <button class="btn btn-outline-secondary btn-plus" type="button">+</button>
+                            <div class="col-md-6">
+                                <div class="card-body">
+                                    <a href="{{route('product.show', $item->product)}}" class="card-title fs-4 text-decoration-none text-black">{{ $item->product->name }}</a>
+                                    <p class="card-text mb-1">Цена: <strong class="item-price">{{ $item->product->priceDiscount() }}</strong> ₽</p>
                                 </div>
-                                <button class="btn btn-sm btn-outline-danger">Удалить</button>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="d-flex align-items-center h-100 justify-content-center">
+                                    <div class="input-group input-group-sm me-2" style="width: 110px;">
+                                        <button class="btn btn-outline-secondary btn-minus" type="button">−</button>
+                                        <input type="number"
+                                               class="form-control text-center item-qty"
+                                               value="{{ $item->quantity }}"
+                                               min="1" step="int">
+                                        <button class="btn btn-outline-secondary btn-plus" type="button">+</button>
+                                    </div>
+                                    <form method="POST" action="{{ route('removeFromCart', $item->product) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-sm btn-outline-danger">Удалить</button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="card mb-3" data-price="4990">
-                    <div class="row g-0 align-items-center">
-                        <div class="col-md-3">
-                            <img src="{{asset('storage/static/photo/набор новорожденного.png')}}" class="img-fluid rounded-start p-2" style="width: auto; height: 10rem" alt="Product">
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card-body">
-                                <h5 class="card-title">Смартфон HyperPhone X</h5>
-                                <p class="card-text mb-1">Цена: <strong class="item-price">4990</strong> ₽</p>
-                                <p class="card-text">Бренд: HyperTech</p>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="d-flex align-items-center h-100 justify-content-center">
-                                <div class="input-group input-group-sm me-2" style="width: 110px;">
-                                    <button class="btn btn-outline-secondary btn-minus" type="button">−</button>
-                                    <input type="number" class="form-control text-center item-qty" value="1" min="1" step="int">
-                                    <button class="btn btn-outline-secondary btn-plus" type="button">+</button>
-                                </div>
-                                <button class="btn btn-sm btn-outline-danger">Удалить</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @empty
+                    <p>Корзина пуста</p>
+                @endforelse
             </div>
 
             <div class="col-md-4">
                 <div class="card p-3">
                     <h5 class="mb-3">Итог</h5>
-                    <p>Товаров: <span id="total-items">2</span></p>
-                    <p>Общая стоимость: <strong id="total-price">19980</strong> ₽</p>
+                    <p>Товаров: <span id="total-items">{{ $cart->items->count() }}</span></p>
+                    <p>Общая стоимость: <strong id="total-price">{{ $cart->items->sum(fn($item) => $item->product->priceDiscount() * $item->quantity) }}</strong> ₽</p>
 
                     <div class="form-check my-2">
                         <input class="form-check-input" type="checkbox" id="agreeCheckbox">
