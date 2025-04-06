@@ -15,10 +15,12 @@ class ProductController extends Controller
             ->firstOrFail();
 
         $isFavorite = false;
+        $isInCart = false;
 
         if (auth()->check()) {
             $user = auth()->user();
 
+            // Проверка избранного
             $favorite = $user->favorite;
 
             if ($favorite) {
@@ -26,10 +28,20 @@ class ProductController extends Controller
                     ->where('product_id', $product->id)
                     ->exists();
             }
+
+            // Проверка корзины
+            $cart = $user->cart;
+
+            if ($cart) {
+                $isInCart = $cart->items()
+                    ->where('product_id', $product->id)
+                    ->exists();
+            }
         }
 
-        return view('product.product', compact('product', 'isFavorite'));
+        return view('product.product', compact('product', 'isFavorite', 'isInCart'));
     }
+
 
 
 

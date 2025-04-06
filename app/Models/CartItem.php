@@ -12,7 +12,7 @@ class CartItem extends Model
     use HasFactory;
 
     protected $fillable = [
-        'total', 'quantity',
+        'total', 'quantity', 'product_id',
     ];
 
     public function product(): BelongsTo
