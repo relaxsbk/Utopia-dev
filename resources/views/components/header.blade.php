@@ -26,18 +26,18 @@
                 <!-- Иконки справа -->
                 <ul class="navbar-nav ms-3">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <img src="{{asset('/storage/static/photo/Vector.png')}} " alt="" class="icon-img">
+                        <a class="nav-link" href="{{route('cart')}}">
+                            <img src="{{asset('/storage/static/photo/Vector.png')}} " alt="cart" class="icon-img">
                         </a>
                     </li>
                     <li class="nav-item">
                        @if(auth()->check())
                             <a class="nav-link" href="{{route('profile')}}">
-                                <img src="{{asset('/storage/static/photo/v.png')}}" alt="" class="icon-img">
+                                <img src="{{asset('/storage/static/photo/v.png')}}" alt="profile" class="icon-img">
                             </a>
                        @else
                             <a class="nav-link" href="{{route('login')}}">
-                                <img src="{{asset('/storage/static/photo/v.png')}}" alt="" class="icon-img">
+                                <img src="{{asset('/storage/static/photo/v.png')}}" alt="profile" class="icon-img">
                             </a>
                        @endif
                     </li>

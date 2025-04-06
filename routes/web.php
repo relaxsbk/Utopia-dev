@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\FavoriteController;
+use App\Http\Controllers\Views\CartController;
 use App\Http\Controllers\Views\CategoryController;
 use App\Http\Controllers\Views\HomeController;
 use App\Http\Controllers\Views\ProductController;
@@ -30,6 +31,10 @@ Route::controller(ProductController::class)->group(function () {
 Route::controller(FavoriteController::class)->middleware(['auth'])->group(function () {
     Route::post('/favorite/add/{product:id}', 'addToFavorite')->name('addToFavorite');
     Route::delete('/favorite/remove/{product:id}', 'removeFromFavorites')->name('removeFromFavorites');
+});
+
+Route::controller(CartController::class)->group(function () {
+    Route::get('/cart', 'index')->name('cart');
 });
 
 Route::middleware('auth')->group(function () {
