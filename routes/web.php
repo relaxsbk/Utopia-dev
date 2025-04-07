@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\FavoriteController;
+use App\Http\Controllers\User\OrderController;
 use App\Http\Controllers\Views\CartController;
 use App\Http\Controllers\Views\CategoryController;
 use App\Http\Controllers\Views\HomeController;
@@ -36,7 +37,11 @@ Route::controller(FavoriteController::class)->middleware(['auth.message'])->grou
 Route::controller(CartController::class)->middleware(['auth.message'])->group(function () {
     Route::get('/cart', 'index')->name('cart');
     Route::post('/cart/add/{product:id}', 'addToCart')->name('addToCart');
-    Route::delete('/cart/remove/{product:id}', 'removeFromCart')->name('removeFromCart');
+    Route::get('/cart/remove/{product:id}', 'removeFromCart')->name('removeFromCart');
+});
+
+Route::controller(OrderController::class)->middleware('auth')->group(function () {
+    Route::post('/checkout', 'store')->name('checkout');
 });
 
 Route::middleware('auth.message')->group(function () {

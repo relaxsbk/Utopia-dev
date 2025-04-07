@@ -26,9 +26,15 @@ class Product extends Model
         return number_format($this->price, 0, '', ' ');
     }
 
-    public function priceDiscount(): string
+    public function priceDiscount(): float
     {
-        return number_format($this->price - ($this->price * ($this->discount / 100)), 0, '', ' ');
+        return round($this->price - ($this->price * ($this->discount / 100)));
+    }
+
+
+    public function priceDiscountFormatted(): string
+    {
+        return number_format($this->priceDiscount(), 0, '', ' ');
     }
 
     public function category(): BelongsTo

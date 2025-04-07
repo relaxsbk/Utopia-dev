@@ -12,7 +12,7 @@ class OrderItem extends Model
     use HasFactory;
 
     protected $fillable = [
-        'total', 'quantity'
+        'total', 'quantity', 'order_id', 'product_id'
     ];
 
     public function order(): BelongsTo

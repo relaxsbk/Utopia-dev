@@ -287,24 +287,6 @@
                                 </a>
                             @endforeach
                         @endif
-{{--                        <div class="col-md-4">--}}
-{{--                            <div class="card-k">--}}
-{{--                                <img src="{{asset('storage/static/photo/настольная игра.png')}}" class="card-k-img-top" alt="Развивающие игрушки">--}}
-{{--                                <div class="card-k-body">--}}
-{{--                                    <h6 class="card-k-title">Настольная игра Три Кота</h6>--}}
-{{--                                    <div class="category">Категория:Развивающие игрушки</div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="col-md-4">--}}
-{{--                            <div class="card-k">--}}
-{{--                                <img src="{{asset('storage/static/photo/набор новорожденного.png')}}" class="card-k-img-top" alt="Игровые наборы">--}}
-{{--                                <div class="card-k-body">--}}
-{{--                                    <h6 class="card-k-title">Подарочный набор для новорожденного</h6>--}}
-{{--                                    <div class="category">Категория: Игровые наборы</div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
                     </div>
                 </div>
 
@@ -312,6 +294,12 @@
             </div>
         </div>
     </div>
+
+    <section class="container my-5">
+        <h2 class="text-center mb-5 display-5 fw-bold">🛒 История заказов 🛒</h2>
+
+
+    </section>
 
     <section class="container my-5">
         <h2 class="text-center mb-5 display-5 fw-bold">🧸 Каталог 🧸</h2>
@@ -330,51 +318,7 @@
                         </a>
                     </div>
                 @endforeach
-{{--                <div class="col-md-4 col-lg-2">--}}
-{{--                    <div class="card custom-card">--}}
-{{--                        <img src="{{asset('storage/static/photo/кар-каталог-2.webp')}}" class="card-img-top" alt="Развивающие игрушки">--}}
-{{--                        <div class="card-body custom-body">--}}
-{{--                            <h3 class="card-title">Развивающие игрушки</h3>--}}
 
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="col-md-4 col-lg-2">--}}
-{{--                    <div class="card custom-card">--}}
-{{--                        <img src="{{asset('storage/static/photo/кар-каталог-3.webp')}}" class="card-img-top" alt="Музыкальные игрушки">--}}
-{{--                        <div class="card-body custom-body">--}}
-{{--                            <h3 class="card-title">Музыкальные игрушки</h3>--}}
-
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="col-md-4 col-lg-2">--}}
-{{--                    <div class="card custom-card">--}}
-{{--                        <img src="{{asset('storage/static/photo/кар-каталог-4.webp')}}" class="card-img-top" alt="Технические игрушки">--}}
-{{--                        <div class="card-body custom-body">--}}
-{{--                            <h3 class="card-title">Технические игрушки</h3>--}}
-
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="col-md-4 col-lg-2">--}}
-{{--                    <div class="card custom-card">--}}
-{{--                        <img src="{{asset('storage/static/photo/кар-каталог-5.webp')}}" class="card-img-top" alt="Подвижные игры">--}}
-{{--                        <div class="card-body custom-body">--}}
-{{--                            <h3 class="card-title">Подвижные игры</h3>--}}
-
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="col-md-4 col-lg-2">--}}
-{{--                    <div class="card custom-card">--}}
-{{--                        <img src="{{asset('storage/static/photo/кар-каталог-6.webp')}}" class="card-img-top" alt="Игровой набор">--}}
-{{--                        <div class="card-body custom-body">--}}
-{{--                            <h3 class="card-title">Игровой набор</h3>--}}
-
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
             </div>
         </section>
     </section>
