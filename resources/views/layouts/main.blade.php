@@ -21,6 +21,7 @@
     <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1055;">
         <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true" data-bs-delay="3000">
             <div class="toast-header">
+                <svg class="bg-black text-black rounded me-2" width="20" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice"><rect width="100%" height="100%" fill="#198754"></rect></svg>
                 <strong class="me-auto">Успешно</strong>
                 <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
@@ -34,6 +35,7 @@
     <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1055;">
         <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true" data-bs-delay="3000">
             <div class="toast-header">
+                <svg class="bg-black text-black rounded me-2" width="20" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice"><rect width="100%" height="100%" fill="#fd7e14"></rect></svg>
                 <strong class="me-auto">Внимание</strong>
                 <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>

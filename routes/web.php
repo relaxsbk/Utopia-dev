@@ -28,18 +28,18 @@ Route::controller(ProductController::class)->group(function () {
 //})->middleware(['auth', 'verified'])->name('dashboard');
 //
 
-Route::controller(FavoriteController::class)->middleware(['auth'])->group(function () {
+Route::controller(FavoriteController::class)->middleware(['auth.message'])->group(function () {
     Route::post('/favorite/add/{product:id}', 'addToFavorite')->name('addToFavorite');
     Route::delete('/favorite/remove/{product:id}', 'removeFromFavorites')->name('removeFromFavorites');
 });
 
-Route::controller(CartController::class)->middleware(['auth'])->group(function () {
+Route::controller(CartController::class)->middleware(['auth.message'])->group(function () {
     Route::get('/cart', 'index')->name('cart');
     Route::post('/cart/add/{product:id}', 'addToCart')->name('addToCart');
     Route::delete('/cart/remove/{product:id}', 'removeFromCart')->name('removeFromCart');
 });
 
-Route::middleware('auth')->group(function () {
+Route::middleware('auth.message')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
