@@ -16,7 +16,22 @@
 @endsection
 
 @section('main')
-    <div class="container my-5">
+    <div class="container mb-4 mt-5">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item p-0 m-0">
+                    <a href="{{route('home')}}">Главная</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    Корзина
+                </li>
+
+            </ol>
+        </nav>
+    </div>
+
+    <div class="container">
+
         <h2 class="mb-4">Корзина</h2>
 
         <form method="POST" action="{{ route('checkout') }}">
@@ -68,7 +83,7 @@
                             </div>
                         </div>
                     @empty
-                        <p>Корзина пуста</p>
+                        <p class="fs-4">Вы пока ничего не добавили в корзину 😥</p>
                     @endforelse
                 </div>
 

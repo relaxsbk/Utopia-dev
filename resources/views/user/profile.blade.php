@@ -195,8 +195,24 @@
 @endsection
 
 @section('main')
+
+    <!-- Хлебные крошки -->
+    <div class="container mt-5">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="{{route('home')}}">Главная</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    Профиль
+                </li>
+
+            </ol>
+        </nav>
+    </div>
+
     <!-- Профиль -->
-    <div class="container mt-5 pt-5 ">
+    <div class="container  pt-5 ">
         <div class="row justify-content-center">
             <div class="col-md-8 profile-card text-center">
                 <h4 class="fw-bold">{{auth()->user()->firstName}} {{auth()->user()->lastName}}</h4>
@@ -290,16 +306,28 @@
                     </div>
                 </div>
 
-                <a href="#" class="btn btn-dark mt-4">Перейти в корзину</a>
+                <a href="{{route('cart')}}" class="btn btn-dark mt-4">Перейти в корзину</a>
             </div>
         </div>
     </div>
 
-    <section class="container my-5">
-        <h2 class="text-center mb-5 display-5 fw-bold">🛒 История заказов 🛒</h2>
-
-
-    </section>
+   @if(!$orders->isEmpty())
+       <section class="container my-5">
+           <h2 class="text-center mb-5 display-5 fw-bold">🛒 История заказов 🛒</h2>
+           <div class="d-flex justify-content-between flex-wrap">
+               @foreach ($orders as $order)
+                   <div class="card mb-3">
+                       <div class="card-body">
+                           <h5 class="card-title">Заказ №{{ $order->id }}</h5>
+                           <p class="card-text">Дата заказа: {{ $order->created_at->format('d.m.Y') }}</p>
+                           <p class="card-text">Статус: {{ $order->orderStatus->label }}</p> <!-- Если у вас есть статус заказа -->
+                           <p class="card-text">Сумма: {{ $order->total }} ₽</p>
+                       </div>
+                   </div>
+               @endforeach
+           </div>
+       </section>
+   @endif
 
     <section class="container my-5">
         <h2 class="text-center mb-5 display-5 fw-bold">🧸 Каталог 🧸</h2>

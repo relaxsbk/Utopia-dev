@@ -22,14 +22,18 @@ class ProfileController extends Controller
             ->first();
 
 
+
         $products = $favoriteItems ? $favoriteItems->items->pluck('product') : collect();
 
         $categories = Category::query()->published()->take(6)->get();
+
+        $orders = $user->orders()->latest()->get();
 
         return view('user.profile', [
             'user' => $user,
             'favoriteProducts' => $products,
             'categories' => $categories,
+            'orders' => $orders,
         ]);
     }
 

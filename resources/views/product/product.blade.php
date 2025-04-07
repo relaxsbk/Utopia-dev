@@ -110,7 +110,7 @@
 @endsection
 
 @section('main')
-    <div class="container py-3 mt-4">
+    <div class="container mt-4">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{route('home')}}">Главная</a></li>
@@ -143,7 +143,7 @@
                 @if($product->discount > 0)
                     <div class="product-price mb-3">
                         <span class="old-price">{{$product->money()}} ₽</span>
-                        <span class="new-price">{{$product->priceDiscount()}} ₽</span>
+                        <span class="new-price">{{$product->priceDiscountFormatted()}} ₽</span>
                     </div>
                 @else
                     <div class="product-price mb-3">

@@ -5,7 +5,7 @@
             <div class="product-category">{{$product->category->name}}</div>
 
             @if($product->discount > 0)
-                <div class="product-price">{{$product->priceDiscount()}} ₽</div>
+                <div class="product-price">{{$product->priceDiscountFormatted()}} ₽</div>
             @else
                 <div class="product-price">{{$product->money()}} ₽</div>
             @endif
