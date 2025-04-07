@@ -12,7 +12,10 @@ class CartController extends Controller
     {
         $cart = auth()->user()->cart()->with('items.product.brand')->first();
 
-        return view('basket', compact('cart'));
+        // Передаем в представление флаг наличия товаров в корзине
+        $hasItemsInCart = $cart && $cart->items->isNotEmpty();
+
+        return view('basket', compact('cart', 'hasItemsInCart'));
     }
 
     public function addToCart(Request $request, Product $product)

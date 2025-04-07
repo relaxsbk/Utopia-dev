@@ -311,7 +311,7 @@
         </div>
     </div>
 
-   @if(!$orders->isEmpty())
+   @if($orders->isNotEmpty())
        <section class="container my-5">
            <h2 class="text-center mb-5 display-5 fw-bold">🛒 История заказов 🛒</h2>
            <div class="d-flex justify-content-between flex-wrap">
