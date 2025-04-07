@@ -1,5 +1,5 @@
 import './bootstrap';
-import './bootstrap.min.js'
+import './bootstrap.bundle.min.js'
 import './home.js'
 
 import Alpine from 'alpinejs';

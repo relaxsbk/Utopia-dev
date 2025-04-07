@@ -544,20 +544,6 @@
 @section('main')
 
     <header class="hero text-white d-flex flex-column align-items-center justify-content-center">
-        @if(session()->has('success'))
-            <div class="alert alert-success" role="alert">
-                <div class="container">
-                    {{session()->get('success')}}
-                </div>
-            </div>
-        @endif
-        @if(session()->has('message_errors'))
-            <div class="alert alert-danger" role="alert">
-                <div class="container">
-                    {{session()->get('message_errors')}}
-                </div>
-            </div>
-        @endif
         <div class="container position-relative">
             <img src="{{asset('/storage/static/photo/вверх.png')}}" alt="Banner" class="hero-image"> <!-- Фоновое фото -->
             <a href="{{route('catalog')}}" class="btn custom-btn btn-outline-secondary ">Перейти в каталог</a>

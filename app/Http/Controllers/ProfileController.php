@@ -21,7 +21,8 @@ class ProfileController extends Controller
             ->with('items.product')
             ->first();
 
-        $products = $favoriteItems ? $favoriteItems->items->pluck('product') : [];
+
+        $products = $favoriteItems ? $favoriteItems->items->pluck('product') : collect();
 
         $categories = Category::query()->published()->take(6)->get();
 
@@ -66,6 +67,6 @@ class ProfileController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return Redirect::to('/');
+        return Redirect::to('/')->with('success', 'Вы успешно вышли из своего аккаунта');
     }
 }
