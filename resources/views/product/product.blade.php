@@ -186,22 +186,28 @@
                         </button>
                     @endif
 
-                        @if ($isInCart)
-                            <form method="POST" action="{{ route('removeFromCart', $product) }}">
-                                @csrf
-                                @method('DELETE')
-                                <button class="button danger" type="submit">Удалить из корзины</button>
-                            </form>
+
+                        @if (auth()->check())
+                            @if ($isInCart)
+                                <form method="POST" action="{{ route('removeFromCart', $product) }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="button danger" type="submit">Удалить из корзины</button>
+                                </form>
+                            @else
+                                <form method="POST" action="{{ route('addToCart', $product) }}">
+                                    @csrf
+                                    <button class="button" type="submit">В КОРЗИНУ</button>
+                                </form>
+                            @endif
                         @else
-                            <form method="POST" action="{{ route('addToCart', $product) }}">
-                                @csrf
-                                <button class="button" type="submit">В КОРЗИНУ</button>
-                            </form>
+                            <button class="buttonDis" disabled type="submit">В КОРЗИНУ</button>
                         @endif
-
-
                 </div>
 
+                @guest
+                    <p class="text-secondary fs-5 border-start border-3 px-2 py-3 ">Чтобы добавить товар в корзину или избранное, требуется <a class="text-secondary text-decoration-none" href="{{route('login')}}">авторизоваться</a></p>
+                @endguest
                 <div class="product-description mb-4">
                     <h5 class="mb-2">Описание</h5>
                     <p>
