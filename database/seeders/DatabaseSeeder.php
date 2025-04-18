@@ -9,6 +9,7 @@ use App\Models\Product;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,7 +19,28 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // Создаём бренды
-        $brands = Brand::factory(5)->create();
+        $brandsData = [
+            ['name' => 'Жирафики', 'image' => '/storage/static/photo/brands/лого_жирафики.png', 'description' => 'Крутые жирафики'],
+            ['name' => 'Умка', 'image' => '/storage/static/photo/brands/лого_умка.png', 'description' => 'Умка'],
+            ['name' => 'Step Puzzle', 'image' => '/storage/static/photo/brands/лого_степ.png', 'description' => 'пазлы'],
+            ['name' => 'НОРDПЛАСТ', 'image' => '/storage/static/photo/brands/лого_норпалис.png', 'description' => 'нордпласт'],
+            ['name' => 'Lori', 'image' => '/storage/static/photo/brands/лого_lori.png', 'description' => 'Лори'],
+            ['name' => 'Весна', 'image' => '/storage/static/photo/brands/лого_весна.png', 'description' => 'Весна'],
+        ];
+
+        $brands = collect();
+
+        foreach ($brandsData as $brandData) {
+            $brands->push(
+                Brand::create([
+                    'name' => $brandData['name'],
+                    'slug' => Str::slug($brandData['name']),
+                    'description' => $brandData['description'],
+                    'image' => $brandData['image'], // путь относительно storage/public
+                    'published' => true,
+                ])
+            );
+        }
 
         // Каталоги
         $catalogs = [

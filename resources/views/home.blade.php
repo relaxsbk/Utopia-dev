@@ -558,12 +558,15 @@
         <div class="container">
             <div class="brand-wrapper rounded-4 shadow">
                 <div class="brand-logos d-flex justify-content-around align-items-center flex-wrap gap-4">
-                    <img src="{{asset('/storage/static/photo/лого весна.png')}}" alt="Весна" class="brand-logo" />
-                    <img src="{{asset('/storage/static/photo/лого степ.png')}}" alt="Step Puzzle" class="brand-logo" />
-                    <img src="{{asset('/storage/static/photo/лого норпалис.png/')}}" alt="Нордпласт" class="brand-logo" />
-                    <img src="{{asset('/storage/static/photo/лого умка.png')}}" alt="Умка" class="brand-logo" />
-                    <img src="{{asset('/storage/static/photo/лого жирафики.png')}}" alt="Жирафики" class="brand-logo" />
-                    <img src="{{asset('/storage/static/photo/лого lori.png')}}" alt="LORI" class="brand-logo" />
+                    @foreach($brands as $brand)
+                        <img src="{{asset($brand->image)}}" alt="{{$brand->name}}" class="brand-logo" />
+                    @endforeach
+
+{{--                    <img src="{{asset('/storage/static/photo/лого степ.png')}}" alt="Step Puzzle" class="brand-logo" />--}}
+{{--                    <img src="{{asset('/storage/static/photo/лого норпалис.png/')}}" alt="Нордпласт" class="brand-logo" />--}}
+{{--                    <img src="{{asset('/storage/static/photo/лого умка.png')}}" alt="Умка" class="brand-logo" />--}}
+{{--                    <img src="{{asset('/storage/static/photo/лого жирафики.png')}}" alt="Жирафики" class="brand-logo" />--}}
+{{--                    <img src="{{asset('/storage/static/photo/лого lori.png')}}" alt="LORI" class="brand-logo" />--}}
                 </div>
             </div>
         </div>

@@ -144,6 +144,15 @@
                         <input class="form-check-input brand-checkbox" type="checkbox" value="Step Puzzle" id="brand3">
                         <label class="form-check-label" for="brand3">Step Puzzle</label>
                     </div>
+                    <div class="form-check">
+                        <input class="form-check-input brand-checkbox" type="checkbox" value="Step Puzzle" id="brand3">
+                        <label class="form-check-label" for="brand3">НОРDПЛАСТ</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input brand-checkbox" type="checkbox" value="Step Puzzle" id="brand3">
+                        <label class="form-check-label" for="brand3">Lori</label>
+                    </div>
+
                     <div class="form-check mb-3">
                         <input class="form-check-input brand-checkbox" type="checkbox" value="Весна" id="brand4">
                         <label class="form-check-label" for="brand4">Весна</label>
