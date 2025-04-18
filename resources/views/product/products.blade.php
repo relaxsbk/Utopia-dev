@@ -124,21 +124,50 @@
             <!-- Фильтр -->
             <div class="col-md-3 mb-4">
                 <div class="filter-box">
-
                     <h5>Цена</h5>
-                    <label for="priceRange" class="form-label">299₽ - 14 000₽</label>
-                    <input type="range" class="form-range" id="priceRange" min="299" max="14000" step="1">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <input type="number" class="form-control me-2" placeholder="от" min="0" style="width: 45%;" id="priceMin" value="299">
+                        <input type="number" class="form-control" placeholder="до" max="14000" style="width: 45%;" id="priceMax" value="14000">
+                    </div>
                     <hr>
+
                     <h5>Бренды</h5>
-                    <select class="form-select">
-                        <option>Все бренды</option>
-                        <option>Жирафики</option>
-                        <option>Умка</option>
-                        <option>Step Puzzle</option>
-                        <option>Весна</option>
+                    <div class="form-check">
+                        <input class="form-check-input brand-checkbox" type="checkbox" value="Жирафики" id="brand1">
+                        <label class="form-check-label" for="brand1">Жирафики</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input brand-checkbox" type="checkbox" value="Умка" id="brand2">
+                        <label class="form-check-label" for="brand2">Умка</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input brand-checkbox" type="checkbox" value="Step Puzzle" id="brand3">
+                        <label class="form-check-label" for="brand3">Step Puzzle</label>
+                    </div>
+                    <div class="form-check mb-3">
+                        <input class="form-check-input brand-checkbox" type="checkbox" value="Весна" id="brand4">
+                        <label class="form-check-label" for="brand4">Весна</label>
+                    </div>
+
+                    <h5>Наличие</h5>
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="inStock">
+                        <label class="form-check-label" for="inStock">Только в наличии</label>
+                    </div>
+
+                    <h5>Сортировать по</h5>
+                    <select class="form-select mb-3" id="sortSelect">
+                        <option value="">Без сортировки</option>
+                        <option value="price_asc">Цене: по возрастанию</option>
+                        <option value="price_desc">Цене: по убыванию</option>
+                        <option value="name_asc">Названию: А → Я</option>
+                        <option value="name_desc">Названию: Я → А</option>
                     </select>
 
-                    <a class="product-button" id="filterBtn">Я фильтрую</a>
+                    <div class="d-grid gap-2">
+                        <button class="product-button" id="filterBtn">Применить фильтр</button>
+                        <button class="product-button" id="resetBtn" style="background: #e5e5e5;">Сбросить фильтры</button>
+                    </div>
                 </div>
             </div>
 
