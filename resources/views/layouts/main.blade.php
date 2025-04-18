@@ -6,6 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite(['resources/css/custom.css', 'resources/css/bootstrap.min.css', 'resources/js/app.js', ])
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('assets/css/custom.css')}}">
     <title>@yield('title')</title>
     @yield('meta')
@@ -61,6 +62,6 @@
         });
     });
 </script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
 </body>
 </html>

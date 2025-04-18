@@ -110,7 +110,7 @@
 @endsection
 
 @section('main')
-    <div class="container mt-4">
+    <div class="container mt-5">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{route('home')}}">Главная</a></li>
@@ -125,21 +125,24 @@
 
     <div class="container product-page mt-5">
         <div class="row">
-            <!-- Левый столбец: 3 маленьких превью -->
+            <!-- Левый столбец: Превьюшки -->
             <div class="col-md-2 d-flex flex-column align-items-center justify-content-start gap-3">
-                <img src="{{asset('storage/static/photo/мягкая-игрушка-2-1.png')}}" class="img-thumbnail preview-img" alt="Превью 1">
-                <img src="{{asset('storage/static/photo/мягкая-игрушка-2-2.png')}}" class="img-thumbnail preview-img" alt="Превью 2">
-                <img src="{{asset('storage/static/photo/мягкая-игрушка-2-3.png')}}" class="img-thumbnail preview-img" alt="Превью 3">
+                <img src="{{ asset('storage/static/photo/мягкая-игрушка-2-1.png') }}" class="img-thumbnail preview-img" alt="Превью 1" onclick="setMainImage(this)">
+                <img src="{{ asset('storage/static/photo/мягкая-игрушка-2-2.png') }}" class="img-thumbnail preview-img" alt="Превью 2" onclick="setMainImage(this)">
+                <img src="{{ asset('storage/static/photo/мягкая-игрушка-2-3.png') }}" class="img-thumbnail preview-img" alt="Превью 3" onclick="setMainImage(this)">
             </div>
 
-            <!-- Большое изображение рядом -->
+            <!-- Большое изображение -->
             <div class="col-md-4">
-                <img src="{{asset('storage/static/photo/мягкая-игрушка-2.png')}}" class="img-fluid main-image rounded" alt="Главное изображение">
+                <img id="mainImage" src="{{ asset('storage/static/photo/мягкая-игрушка-2.png') }}" class="img-fluid main-image rounded" alt="Главное изображение">
             </div>
 
             <!-- Правая часть с информацией -->
-            <div class="col-md-6">
-                <h2>{{$product->name}}</h2>
+            <div class="col-md-6 bg-light rounded-2 py-3">
+                <div class="d-flex justify-content-between">
+                    <h2>{{$product->name}}</h2>
+                    <img src="{{asset($product->brand->image)}}" alt="{{$product->brand->name}}" class="brand-logo" style="width: 9rem;" />
+                </div>
                 @if($product->discount > 0)
                     <div class="product-price mb-3">
                         <span class="old-price">{{$product->money()}} ₽</span>
@@ -225,4 +228,11 @@
             </div>
         </div>
     </div>
+    <script>
+        function setMainImage(imgElement) {
+            const mainImage = document.getElementById('mainImage');
+            mainImage.src = imgElement.src;
+            mainImage.alt = imgElement.alt;
+        }
+    </script>
 @endsection
