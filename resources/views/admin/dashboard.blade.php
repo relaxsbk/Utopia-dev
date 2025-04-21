@@ -1,25 +1,77 @@
 @extends('layouts.admin')
 
 @section('subtitle', 'Welcome')
-@section('content_header_title', 'Home')
-@section('content_header_subtitle', 'Welcome')
+@section('content_header_title', 'Административная панель')
+{{--@section('content_header_subtitle', 'Welcome')--}}
 
 {{-- Content body: main page content --}}
 
 @section('content_body')
-    <p>Welcome to this beautiful admin panel.</p>
+    <div class="row">
+        <div class="col-md-6 col-xl-3 mb-4">
+            <x-adminlte-card title="Каталоги" theme="indigo" icon="fas fa-folder" class="h-100" footerSlot>
+                <a href="{{route('admin.catalog.index')}}" class="stretched-link text-decoration-none text-dark">
+                    Перейти к списку каталогов
+                </a>
+            </x-adminlte-card>
 
-@stop
+        </div>
+        <div class="col-md-6 col-xl-3 mb-4">
+            <x-adminlte-card title="Каталоги" theme="indigo" icon="fas fa-folder" class="h-100" footerSlot>
+                <a href="" class="stretched-link text-decoration-none text-dark">
+                    Перейти к списку каталогов
+                </a>
+            </x-adminlte-card>
+
+        </div>
+        <div class="col-md-6 col-xl-3 mb-4">
+            <x-adminlte-card title="Каталоги" theme="indigo" icon="fas fa-folder" class="h-100" footerSlot>
+                <a href="" class="stretched-link text-decoration-none text-dark">
+                    Перейти к списку каталогов
+                </a>
+            </x-adminlte-card>
+
+        </div>
+        <div class="col-md-6 col-xl-3 mb-4">
+            <x-adminlte-card title="Каталоги" theme="indigo" icon="fas fa-folder" class="h-100" footerSlot>
+                <a href="" class="stretched-link text-decoration-none text-dark">
+                    Перейти к списку каталогов
+                </a>
+            </x-adminlte-card>
+
+        </div>
+        <div class="col-md-6 col-xl-3 mb-4">
+            <x-adminlte-card title="Каталоги" theme="indigo" icon="fas fa-folder" class="h-100" footerSlot>
+                <a href="" class="stretched-link text-decoration-none text-dark">
+                    Перейти к списку каталогов
+                </a>
+            </x-adminlte-card>
+
+        </div>
+
+
+    </div>
+@endsection
+
 
 {{-- Push extra CSS --}}
 
 @push('css')
-    {{-- Add here extra stylesheets --}}
-    {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
+    <style>
+        .card {
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+    </style>
 @endpush
 
 {{-- Push extra scripts --}}
 
 @push('js')
-    <script> console.log("Hi, I'm using the Laravel-AdminLTE package!"); </script>
+    <script>
+    </script>
 @endpush

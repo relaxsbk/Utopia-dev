@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminCatalogController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\FavoriteController;
@@ -10,6 +11,14 @@ use App\Http\Controllers\Views\CategoryController;
 use App\Http\Controllers\Views\HomeController;
 use App\Http\Controllers\Views\ProductController;
 use Illuminate\Support\Facades\Route;
+
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/', [AdminController::class, 'index'])->name('dashboard');
+    Route::resource('catalog', AdminCatalogController::class);
+    // Добавьте другие маршруты для админки
+});
+
+
 
 Route::get('/', HomeController::class)->name('home');
 
@@ -49,10 +58,7 @@ Route::middleware('auth.message')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::prefix('admin')->name('admin.')->group(function () {
-    Route::get('/', [AdminController::class, 'index'])->name('dashboard');
-    // Добавьте другие маршруты для админки
-});
+
 
 
 require __DIR__.'/auth.php';

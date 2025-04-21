@@ -215,9 +215,9 @@ return [
     */
 
     'sidebar_mini' => 'lg',
-    'sidebar_collapse' => false,
+    'sidebar_collapse' => true,
     'sidebar_collapse_auto_size' => false,
-    'sidebar_collapse_remember' => false,
+    'sidebar_collapse_remember' => true,
     'sidebar_collapse_remember_no_transition' => true,
     'sidebar_scrollbar_theme' => 'os-theme-light',
     'sidebar_scrollbar_auto_hide' => 'l',
@@ -226,7 +226,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Control Sidebar (Right Sidebar)
+    | Control Sidebar (Right Sidebar)-
     |--------------------------------------------------------------------------
     |
     | Here we can modify the right sidebar aka control sidebar of the admin panel.
@@ -257,7 +257,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => '/admin',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -301,94 +301,119 @@ return [
     'menu' => [
         // Navbar items:
         [
-            'type' => 'navbar-search',
-            'text' => 'search',
-            'topnav_right' => true,
-        ],
-        [
             'type' => 'fullscreen-widget',
             'topnav_right' => true,
         ],
 
         // Sidebar items:
+
+        ['header' => 'МОДЕЛИ'],
         [
-            'text' => 'blog',
-            'url' => 'admin/blog',
-            'can' => 'manage-blog',
-        ],
-        [
-            'text' => 'Модели',
-            'url' => 'admin/pages',
-            'icon' => 'far fa-fw fa-file',
-            'label' => 4,
-            'label_color' => 'success',
-        ],
-        ['header' => 'account_settings'],
-        [
-            'text' => 'profile',
-            'url' => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'change_password',
-            'url' => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
-        [
-            'text' => 'multilevel',
-            'icon' => 'fas fa-fw fa-share',
+            'text' => 'Каталог',
+            'icon' => 'fas fa-fw fa-folder',
             'submenu' => [
                 [
-                    'text' => 'level_one',
+                    'text' => 'Посмотреть все',
                     'url' => '#',
                 ],
                 [
-                    'text' => 'level_one',
-                    'url' => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url' => '#',
-                        ],
-                        [
-                            'text' => 'level_two',
-                            'url' => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url' => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url' => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
+                    'text' => 'Неопубликованные',
                     'url' => '#',
                 ],
             ],
         ],
-        ['header' => 'labels'],
         [
-            'text' => 'important',
-            'icon_color' => 'red',
-            'url' => '#',
+            'text' => 'Категория',
+            'icon' => 'fas fa-fw fa-folder',
+            'submenu' => [
+                [
+                    'text' => 'Посмотреть все',
+                    'url' => '#',
+                ],
+                [
+                    'text' => 'Неопубликованные',
+                    'url' => '#',
+                ],
+            ],
         ],
         [
-            'text' => 'warning',
-            'icon_color' => 'yellow',
-            'url' => '#',
+            'text' => 'Бренд',
+            'icon' => 'fas fa-fw fa-folder',
+            'submenu' => [
+                [
+                    'text' => 'Посмотреть все',
+                    'url' => '#',
+                ],
+                [
+                    'text' => 'Неопубликованные',
+                    'url' => '#',
+                ],
+            ],
         ],
         [
-            'text' => 'information',
-            'icon_color' => 'cyan',
-            'url' => '#',
+            'text' => 'Товар',
+            'icon' => 'fas fa-fw fa-folder',
+            'submenu' => [
+                [
+                    'text' => 'Посмотреть все',
+                    'url' => '#',
+                ],
+                [
+                    'text' => 'Неопубликованные',
+                    'url' => '#',
+                ],
+            ],
+        ],
+        [
+            'text' => 'Пользователь',
+            'icon' => 'fas fa-fw fa-users',
+            'submenu' => [
+                [
+                    'text' => 'Посмотреть все',
+                    'url' => '#',
+                ],
+                [
+                    'text' => 'Неопубликованные',
+                    'url' => '#',
+//                    'icon' => 'fas fa-fw fa-users',
+                ],
+            ],
+        ],
+
+//        ['header' => 'labels'],
+//        [
+//            'text' => 'important',
+//            'icon_color' => 'red',
+//            'url' => '#',
+//        ],
+//        [
+//            'text' => 'warning',
+//            'icon_color' => 'yellow',
+//            'url' => '#',
+//        ],
+//        [
+//            'text' => 'information',
+//            'icon_color' => 'cyan',
+//            'url' => '#',
+//        ],
+        ['header' => 'АККАУНТ'],
+        [
+            'text' => 'Профиль',
+            'url' => 'admin/settings',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+//        [
+//            'text' => 'Изменить пароль',
+//            'url' => 'admin/settings',
+//            'icon' => 'fas fa-fw fa-lock',
+//        ],
+        [
+            'text' => 'Выход',
+            'url' => 'admin/settings',
+            'icon' => 'fas fa-fw fa-power-off',
         ],
     ],
+
 
     /*
     |--------------------------------------------------------------------------
