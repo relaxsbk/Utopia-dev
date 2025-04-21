@@ -19,20 +19,10 @@ class AdminCatalogController extends Controller
     {
         $catalogs = Catalog::paginate(10);
 
-        return view('admin.adminCatalog', compact('catalogs'));
+        return view('admin.catalog.adminCatalog', compact('catalogs'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
 
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreCatalogRequest $request)
     {
         $validated = $request->validated();
@@ -57,16 +47,18 @@ class AdminCatalogController extends Controller
 
         $catalog = Catalog::query()->create($validated);
 
-        return redirect()->route('admin.catalog.index')
+        return redirect()->back()
             ->with(['success' => "Каталог \"$catalog->name\" успешно добавлен."]);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function noPublished()
     {
-        //
+        $catalogs = Catalog::query()->where('published', false)->paginate(10);
+
+        return view('admin.catalog.adminNoPublishCatalog', compact('catalogs'));
     }
 
     /**
@@ -111,7 +103,7 @@ class AdminCatalogController extends Controller
 
         $catalog->update($validated);
 
-        return redirect()->route('admin.catalog.index')
+        return redirect()->back()
             ->with('success', "Каталог \"$catalog->name\" успешно обновлён.");
     }
 
@@ -123,6 +115,6 @@ class AdminCatalogController extends Controller
     {
         $catalog->delete();
 
-        return redirect()->route('admin.catalog.index')->with('success', 'Категория успешно удалена');
+        return redirect()->back()->with('success', 'Категория успешно удалена');
     }
 }

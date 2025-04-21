@@ -14,7 +14,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('dashboard');
-    Route::resource('catalog', AdminCatalogController::class);
+
+    Route::get('/catalog-no-publish', [AdminCatalogController::class, 'noPublished'])->name('catalog.no.publish');
+    Route::resource('catalog', AdminCatalogController::class)->except('show', 'edit', 'create');
     // Добавьте другие маршруты для админки
 });
 

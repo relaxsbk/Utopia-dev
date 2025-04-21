@@ -314,11 +314,11 @@ return [
             'submenu' => [
                 [
                     'text' => 'Посмотреть все',
-                    'url' => '#',
+                    'route' => 'admin.catalog.index',
                 ],
                 [
                     'text' => 'Неопубликованные',
-                    'url' => '#',
+                    'route' => 'admin.catalog.no.publish',
                 ],
             ],
         ],
