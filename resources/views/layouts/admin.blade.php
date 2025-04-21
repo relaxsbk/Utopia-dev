@@ -27,6 +27,18 @@
 {{-- Rename section content to content_body --}}
 
 @section('content')
+    @if (session('success'))
+        <x-adminlte-alert theme="success" title="Успех" dismissable>
+            {{ session('success') }}
+        </x-adminlte-alert>
+    @endif
+
+    @if (session('error'))
+        <x-adminlte-alert theme="danger" title="Ошибка" dismissable>
+            {{ session('error') }}
+        </x-adminlte-alert>
+    @endif
+
     @yield('content_body')
 @stop
 
