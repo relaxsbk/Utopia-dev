@@ -315,52 +315,60 @@ return [
                 [
                     'text' => 'Посмотреть все',
                     'route' => 'admin.catalog.index',
+                    'icon' => 'fas fa-fw fa-check',
                 ],
                 [
                     'text' => 'Неопубликованные',
                     'route' => 'admin.catalog.no.publish',
+                    'icon' => 'fas fa-fw fa-ghost',
                 ],
             ],
         ],
         [
             'text' => 'Категория',
-            'icon' => 'fas fa-fw fa-folder',
+            'icon' => 'fas fa-fw fa-book',
             'submenu' => [
                 [
                     'text' => 'Посмотреть все',
-                    'url' => '#',
+//                    'route' => 'admin.catalog.index',
+                    'icon' => 'fas fa-fw fa-check',
                 ],
                 [
                     'text' => 'Неопубликованные',
-                    'url' => '#',
+//                    'route' => 'admin.catalog.no.publish',
+                    'icon' => 'fas fa-fw fa-ghost',
                 ],
             ],
         ],
         [
             'text' => 'Бренд',
-            'icon' => 'fas fa-fw fa-folder',
+            'icon' => 'fas fa-fw fa-star',
             'submenu' => [
                 [
                     'text' => 'Посмотреть все',
-                    'url' => '#',
+//                    'route' => 'admin.catalog.index',
+                    'icon' => 'fas fa-fw fa-check',
                 ],
                 [
                     'text' => 'Неопубликованные',
-                    'url' => '#',
+//                    'route' => 'admin.catalog.no.publish',
+                    'icon' => 'fas fa-fw fa-ghost',
                 ],
             ],
         ],
         [
             'text' => 'Товар',
-            'icon' => 'fas fa-fw fa-folder',
+            'icon' => 'fas fa-fw fa-puzzle-piece',
             'submenu' => [
                 [
                     'text' => 'Посмотреть все',
-                    'url' => '#',
+//                    'route' => 'admin.catalog.index',
+                    'icon' => 'fas fa-fw fa-check',
                 ],
                 [
                     'text' => 'Неопубликованные',
-                    'url' => '#',
+//                    'route' => 'admin.catalog.no.publish',
+                    'icon' => 'fas fa-fw fa-ghost',
                 ],
             ],
         ],
@@ -370,12 +378,13 @@ return [
             'submenu' => [
                 [
                     'text' => 'Посмотреть все',
-                    'url' => '#',
+//                    'route' => 'admin.catalog.index',
+                    'icon' => 'fas fa-fw fa-check',
                 ],
                 [
                     'text' => 'Неопубликованные',
-                    'url' => '#',
-//                    'icon' => 'fas fa-fw fa-users',
+//                    'route' => 'admin.catalog.no.publish',
+                    'icon' => 'fas fa-fw fa-ghost',
                 ],
             ],
         ],

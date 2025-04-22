@@ -17,33 +17,33 @@
 
         </div>
         <div class="col-md-6 col-xl-3 mb-4">
-            <x-adminlte-card title="Каталоги" theme="indigo" icon="fas fa-folder" class="h-100" footerSlot>
+            <x-adminlte-card title="Категории" theme="indigo" icon="fas fa-book" class="h-100" footerSlot>
                 <a href="" class="stretched-link text-decoration-none text-dark">
-                    Перейти к списку каталогов
+                    Перейти к списку категорий
                 </a>
             </x-adminlte-card>
 
         </div>
         <div class="col-md-6 col-xl-3 mb-4">
-            <x-adminlte-card title="Каталоги" theme="indigo" icon="fas fa-folder" class="h-100" footerSlot>
+            <x-adminlte-card title="Бренды" theme="indigo" icon="fas fa-star" class="h-100" footerSlot>
                 <a href="" class="stretched-link text-decoration-none text-dark">
-                    Перейти к списку каталогов
+                    Перейти к списку брендов
                 </a>
             </x-adminlte-card>
 
         </div>
         <div class="col-md-6 col-xl-3 mb-4">
-            <x-adminlte-card title="Каталоги" theme="indigo" icon="fas fa-folder" class="h-100" footerSlot>
+            <x-adminlte-card title="Товары" theme="indigo" icon="fas fa-puzzle-piece" class="h-100" footerSlot>
                 <a href="" class="stretched-link text-decoration-none text-dark">
-                    Перейти к списку каталогов
+                    Перейти к списку товаров
                 </a>
             </x-adminlte-card>
 
         </div>
         <div class="col-md-6 col-xl-3 mb-4">
-            <x-adminlte-card title="Каталоги" theme="indigo" icon="fas fa-folder" class="h-100" footerSlot>
+            <x-adminlte-card title="Пользователи" theme="indigo" icon="fas fa-users" class="h-100" footerSlot>
                 <a href="" class="stretched-link text-decoration-none text-dark">
-                    Перейти к списку каталогов
+                    Перейти к списку пользователей
                 </a>
             </x-adminlte-card>
 
