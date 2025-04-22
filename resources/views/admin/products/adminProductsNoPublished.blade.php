@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 
-@section('subtitle', 'Welcome')
+@section('subtitle', 'Товары')
 @section('content_header_title', 'Административная панель')
-@section('content_header_subtitle', 'ТОВАРЫ')
+@section('content_header_subtitle', 'Неопубликованные товары')
 
 @section('content_body')
     @php

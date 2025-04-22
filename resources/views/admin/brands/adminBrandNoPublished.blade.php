@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 
-@section('subtitle', 'Welcome')
+@section('subtitle', 'Бренды')
 @section('content_header_title', 'Административная панель')
-@section('content_header_subtitle', 'Бренды')
+@section('content_header_subtitle', 'Неопубликованные бренды')
 
 {{-- Content body: main page content --}}
 

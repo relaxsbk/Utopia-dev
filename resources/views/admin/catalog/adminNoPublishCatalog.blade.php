@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 
-@section('subtitle', 'Welcome')
+@section('subtitle', 'Каталог')
 @section('content_header_title', 'Административная панель')
-@section('content_header_subtitle', 'КАТАЛОГ')
+@section('content_header_subtitle', 'Неопубликованные каталоги')
 
 {{-- Content body: main page content --}}
 

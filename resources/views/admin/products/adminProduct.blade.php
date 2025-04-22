@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('subtitle', 'Просмотр товара')
+@section('subtitle', 'Просмотр товара' . $product->name)
 @section('content_header_title', 'Товар')
 @section('content_header_subtitle', $product->name)
 

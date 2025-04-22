@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('subtitle', 'Welcome')
+@section('subtitle', 'Категории')
 @section('content_header_title', 'Административная панель')
 @section('content_header_subtitle', 'КАТЕГОРИИ')
 
