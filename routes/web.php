@@ -19,7 +19,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/catalog-no-publish', [AdminCatalogController::class, 'noPublished'])->name('catalog.no.publish');
     Route::resource('catalog', AdminCatalogController::class)->except('show', 'edit', 'create');
 
-    Route::get('/category-no-publish', [AdminCategoryController::class, 'noPublished'])->name('catalog.no.publish');
+    Route::get('/category-no-publish', [AdminCategoryController::class, 'noPublished'])->name('category.no.publish');
     Route::resource('category', AdminCategoryController::class)->except('show', 'edit', 'create');
     // Добавьте другие маршруты для админки
 });

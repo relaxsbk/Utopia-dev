@@ -330,12 +330,12 @@ return [
             'submenu' => [
                 [
                     'text' => 'Посмотреть все',
-//                    'route' => 'admin.catalog.index',
+                    'route' => 'admin.category.index',
                     'icon' => 'fas fa-fw fa-check',
                 ],
                 [
                     'text' => 'Неопубликованные',
-//                    'route' => 'admin.catalog.no.publish',
+                    'route' => 'admin.category.no.publish',
                     'icon' => 'fas fa-fw fa-ghost',
                 ],
             ],
