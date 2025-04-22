@@ -18,7 +18,7 @@
         </div>
         <div class="col-md-6 col-xl-3 mb-4">
             <x-adminlte-card title="Категории" theme="indigo" icon="fas fa-book" class="h-100" footerSlot>
-                <a href="" class="stretched-link text-decoration-none text-dark">
+                <a href="{{route('admin.category.index')}}" class="stretched-link text-decoration-none text-dark">
                     Перейти к списку категорий
                 </a>
             </x-adminlte-card>

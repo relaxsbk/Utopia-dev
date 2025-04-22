@@ -13,7 +13,7 @@ class Category extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'slug', 'description', 'image', 'published'
+        'name', 'slug', 'description', 'image', 'published', 'catalog_id'
     ];
 
     public function scopePublished($query)
