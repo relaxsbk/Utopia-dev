@@ -4,6 +4,8 @@ use App\Http\Controllers\Admin\AdminBrandController;
 use App\Http\Controllers\Admin\AdminCatalogController;
 use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdminImageController;
+use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\FavoriteController;
 use App\Http\Controllers\User\OrderController;
@@ -25,6 +27,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
     Route::get('/brand-no-publish', [AdminBrandController::class, 'noPublished'])->name('brand.no.publish');
     Route::resource('brand', AdminBrandController::class)->except('show', 'edit', 'create');
+
+    Route::get('/product-no-publish', [AdminProductController::class, 'noPublished'])->name('products.no.publish');
+    Route::resource('products', AdminProductController::class)->except( 'edit', 'create');
+    Route::put('products/images/{image}', [AdminImageController::class, 'update'])->name('products.image.update');
+    Route::delete('products/images/{image}', [AdminImageController::class, 'destroy'])->name('products.image.destroy');
     // Добавьте другие маршруты для админки
 });
 

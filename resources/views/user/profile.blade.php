@@ -282,7 +282,7 @@
                         <button type="submit" class="edit-profile-button">Выход</button>
                     </form>
                 </div>
-                <div class="bonus-block mb-4">🎁 Ваши бонусы: <span class="text-success">1 240</span> баллов</div>
+{{--                <div class="bonus-block mb-4">🎁 Ваши бонусы: <span class="text-success">1 240</span> баллов</div>--}}
                 <div class="mt-10">
                     <h5 class="mb-3 fw-bolder">Любимые игрушки</h5>
                     <div class="row g-3">

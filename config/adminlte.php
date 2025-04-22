@@ -306,7 +306,23 @@ return [
         ],
 
         // Sidebar items:
-
+        ['header' => 'ЗАКАЗЫ'],
+        [
+            'text' => 'Заказы',
+            'icon' => 'fas fa-fw fa-scroll',
+            'submenu' => [
+                [
+                    'text' => 'Посмотреть все',
+                    'route' => 'admin.category.index',
+                    'icon' => 'fas fa-fw fa-check',
+                ],
+                [
+                    'text' => 'Только новые',
+                    'route' => 'admin.category.no.publish',
+                    'icon' => 'fas fa-fw fa-ghost',
+                ],
+            ],
+        ],
         ['header' => 'МОДЕЛИ'],
         [
             'text' => 'Каталог',
@@ -362,12 +378,12 @@ return [
             'submenu' => [
                 [
                     'text' => 'Посмотреть все',
-//                    'route' => 'admin.catalog.index',
+                    'route' => 'admin.products.index',
                     'icon' => 'fas fa-fw fa-check',
                 ],
                 [
                     'text' => 'Неопубликованные',
-//                    'route' => 'admin.catalog.no.publish',
+                    'route' => 'admin.products.no.publish',
                     'icon' => 'fas fa-fw fa-ghost',
                 ],
             ],
@@ -405,12 +421,18 @@ return [
 //            'icon_color' => 'cyan',
 //            'url' => '#',
 //        ],
-        ['header' => 'АККАУНТ'],
+        ['header' => 'СТАТУСЫ'],
         [
-            'text' => 'Профиль',
+            'text' => 'Статусы заказа',
             'url' => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-fw fa-power-off',
         ],
+        ['header' => 'АККАУНТ'],
+//        [
+//            'text' => 'Профиль',
+//            'url' => 'admin/settings',
+//            'icon' => 'fas fa-fw fa-user',
+//        ],
 //        [
 //            'text' => 'Изменить пароль',
 //            'url' => 'admin/settings',
@@ -421,6 +443,7 @@ return [
             'url' => 'admin/settings',
             'icon' => 'fas fa-fw fa-power-off',
         ],
+
     ],
 
 
