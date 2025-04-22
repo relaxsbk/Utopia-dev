@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminBrandController;
 use App\Http\Controllers\Admin\AdminCatalogController;
 use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\AdminController;
@@ -21,6 +22,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
     Route::get('/category-no-publish', [AdminCategoryController::class, 'noPublished'])->name('category.no.publish');
     Route::resource('category', AdminCategoryController::class)->except('show', 'edit', 'create');
+
+    Route::get('/brand-no-publish', [AdminBrandController::class, 'noPublished'])->name('brand.no.publish');
+    Route::resource('brand', AdminBrandController::class)->except('show', 'edit', 'create');
     // Добавьте другие маршруты для админки
 });
 

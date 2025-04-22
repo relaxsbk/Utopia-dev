@@ -346,12 +346,12 @@ return [
             'submenu' => [
                 [
                     'text' => 'Посмотреть все',
-//                    'route' => 'admin.catalog.index',
+                    'route' => 'admin.brand.index',
                     'icon' => 'fas fa-fw fa-check',
                 ],
                 [
                     'text' => 'Неопубликованные',
-//                    'route' => 'admin.catalog.no.publish',
+                    'route' => 'admin.brand.no.publish',
                     'icon' => 'fas fa-fw fa-ghost',
                 ],
             ],
