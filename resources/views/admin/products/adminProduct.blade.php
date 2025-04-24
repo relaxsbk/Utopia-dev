@@ -93,7 +93,7 @@
     <x-adminlte-card title="Добавить изображения" theme="success" icon="fas fa-upload" collapsible>
         <form action="{{ route('admin.products.image.update', $product) }}" method="POST" enctype="multipart/form-data">
             @csrf
-
+            @method('PUT')
             <x-adminlte-input-file name="new_images[0]" label="Новое изображение (позиция 0)" />
             <x-adminlte-input-file name="new_images[1]" label="Новое изображение (позиция 1)" />
             <x-adminlte-input-file name="new_images[2]" label="Новое изображение (позиция 2)" />
@@ -106,17 +106,21 @@
         <a href="{{ route('admin.products.index') }}" class="btn btn-outline-secondary">
             <i class="fas fa-arrow-left"></i> Назад к списку
         </a>
-        <div>
-{{--            <a href="{{ route('admin.products.edit', $product) }}" class="btn btn-primary">--}}
-{{--                <i class="fas fa-edit"></i> Редактировать--}}
-{{--            </a>--}}
-            <form method="POST" action="{{ route('admin.products.destroy', $product) }}" class="d-inline">
-                @csrf
-                @method('DELETE')
-                <button class="btn btn-danger" onclick="return confirm('Удалить товар?')">
-                    <i class="fas fa-trash"></i> Удалить
-                </button>
-            </form>
-        </div>
+        <a href="{{ route('product.show', $product) }}" class="btn btn-outline-success">
+            <i class="fas fa-eye"></i> Посмотреть
+        </a>
+        <x-adminlte-button label="Удалить" icon="fas fa-fw fa-trash" data-toggle="modal"  data-target="#deleteModal-{{ $product->id }}" class="btn btn-danger" />
     </div>
+
+    <x-adminlte-modal id="deleteModal-{{ $product->id }}" title="Удалить: {{ $product->name }}" theme="danger" icon="fas fa-trash">
+        <form method="POST" id="delete-{{ $product->id }}" action="{{ route('admin.products.destroy', $product) }}">
+            @csrf
+            @method('DELETE')
+            <p>Вы уверены, что хотите удалить <strong>{{ $product->name }}</strong>?</p>
+
+            <x-slot name="footerSlot">
+                <x-adminlte-button label="Удалить" type="submit" theme="danger" form="delete-{{ $product->id }}" />
+            </x-slot>
+        </form>
+    </x-adminlte-modal>
 @endsection

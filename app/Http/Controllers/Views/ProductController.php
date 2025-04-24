@@ -14,6 +14,10 @@ class ProductController extends Controller
             ->where('slug', $product)
             ->firstOrFail();
 
+//        foreach ($product->images as $image) {
+//            dd($image->url);
+//        }
+
         $isFavorite = false;
         $isInCart = false;
 

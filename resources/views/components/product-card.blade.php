@@ -1,5 +1,13 @@
 <div class="product-card">
-        <img src="{{asset('storage/static/photo/мягкая-игрушка-1.png')}}" alt="{{$product->name}}">
+    @php
+        $mainImage = $product->images->where('position', 0)->first();
+    @endphp
+    @if($mainImage === null)
+        <img src="{{asset('storage/static/photo/мягкая-игрушка-2-1.png')}}" alt="{{$product->name}}">
+    @else
+        <img src="{{asset($mainImage->url)}}" class="" alt="{{$product->name}}">
+
+    @endif
         <div class="product-body">
             <div class="product-title">{{$product->name}}</div>
             <div class="product-category">{{$product->category->name}}</div>

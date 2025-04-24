@@ -40,6 +40,7 @@ class AdminProductController extends Controller
      */
     public function store(Request $request)
     {
+
         $validated = $request->validate([
             'category_id' => 'required|exists:categories,id',
             'brand_id' => 'required|exists:brands,id',
@@ -48,15 +49,25 @@ class AdminProductController extends Controller
             'price' => 'required|numeric',
             'discount' => 'nullable|numeric|min:0|max:100',
             'quantity' => 'required|integer|min:0',
-            'published' => 'nullable|boolean',
+            'published' => 'nullable',
             'images.*' => 'nullable|image|max:2048',
         ]);
+
+        // Генерация slug
+        $validated['slug'] = Str::slug($validated['name']);
+
+        // Проверка на уникальность и добавление суффикса при необходимости
+        $originalSlug = $validated['slug'];
+        $counter = 1;
+        while (Product::where('slug', $validated['slug'])->exists()) {
+            $validated['slug'] = $originalSlug . '-' . $counter++;
+        }
 
         $product = Product::create([
             'category_id' => $validated['category_id'],
             'brand_id' => $validated['brand_id'],
             'name' => $validated['name'],
-            'slug' => Str::slug($validated['name']),
+            'slug' => $validated['slug'],
             'description' => $validated['description'],
             'price' => $validated['price'],
             'discount' => $validated['discount'] ?? 0,
@@ -131,67 +142,10 @@ class AdminProductController extends Controller
         return redirect()->back()->with('success', 'Товар обновлен');
     }
 
-//    public function update(Request $request, Product $product)
-//    {
-//        $validated = $request->validate([
-//            'category_id' => 'required|exists:categories,id',
-//            'name' => 'required|string|max:255',
-//            'description' => 'nullable|string',
-//            'published' => 'nullable|boolean',
-//            'new_images.*' => 'nullable|image|max:2048',
-//        ]);
-//
-//        $product->update([
-//            'category_id' => $validated['category_id'],
-//            'name' => $validated['name'],
-//            'slug' => Str::slug($validated['name']),
-//            'description' => $validated['description'] ?? null,
-//            'published' => $validated['published'] ?? false,
-//        ]);
-//
-//        // Обработка изображений по позициям
-//        if ($request->hasFile('new_images')) {
-//            foreach ($request->file('new_images') as $position => $image) {
-//                $existingImage = $product->images()->where('position', $position)->first();
-//
-//                // Сохраняем новое изображение
-//                $path = $image->store('products', 'public');
-//                $url = "storage/$path";
-//
-//                if ($existingImage) {
-//                    // Удаляем старый файл (если хочешь)
-//                    if (Storage::disk('public')->exists(str_replace('storage/', '', $existingImage->url))) {
-//                        Storage::disk('public')->delete(str_replace('storage/', '', $existingImage->url));
-//                    }
-//
-//                    // Обновляем запись
-//                    $existingImage->update([
-//                        'url' => $url,
-//                        'name' => $validated['name'],
-//                    ]);
-//                } else {
-//                    // Создаём новую запись
-//                    $product->images()->create([
-//                        'url' => $url,
-//                        'name' => $validated['name'],
-//                        'position' => $position,
-//                    ]);
-//                }
-//            }
-//        }
-//
-//        return redirect()->back()->with('success', 'Товар обновлён');
-//    }
-
-
-
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Product $product)
     {
         $product->delete();
 
-        return redirect()->back()->with('success', 'Успешное удаление товара');
+        return redirect()->route('admin.products.index')->with('success', 'Успешное удаление товара');
     }
 }

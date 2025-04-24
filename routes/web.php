@@ -30,7 +30,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
     Route::get('/product-no-publish', [AdminProductController::class, 'noPublished'])->name('products.no.publish');
     Route::resource('products', AdminProductController::class)->except( 'edit', 'create');
-    Route::put('products/images/{image}', [AdminImageController::class, 'update'])->name('products.image.update');
+
+    Route::put('products/{product}/images', [AdminImageController::class, 'update'])->name('products.image.update');
     Route::delete('products/images/{image}', [AdminImageController::class, 'destroy'])->name('products.image.destroy');
     // Добавьте другие маршруты для админки
 });

@@ -126,15 +126,29 @@
     <div class="container product-page mt-5">
         <div class="row">
             <!-- Левый столбец: Превьюшки -->
-            <div class="col-md-2 d-flex flex-column align-items-center justify-content-start gap-3">
-                <img src="{{ asset('storage/static/photo/мягкая-игрушка-2-1.png') }}" class="img-thumbnail preview-img" alt="Превью 1" onclick="setMainImage(this)">
-                <img src="{{ asset('storage/static/photo/мягкая-игрушка-2-2.png') }}" class="img-thumbnail preview-img" alt="Превью 2" onclick="setMainImage(this)">
-                <img src="{{ asset('storage/static/photo/мягкая-игрушка-2-3.png') }}" class="img-thumbnail preview-img" alt="Превью 3" onclick="setMainImage(this)">
-            </div>
+{{--            <div class="col-md-2 d-flex flex-column align-items-center justify-content-start gap-3">--}}
+{{--                <img src="{{ asset('storage/static/photo/мягкая-игрушка-2-1.png') }}" class="img-thumbnail preview-img" alt="Превью 1" onclick="setMainImage(this)">--}}
+{{--                <img src="{{ asset('storage/static/photo/мягкая-игрушка-2-2.png') }}" class="img-thumbnail preview-img" alt="Превью 2" onclick="setMainImage(this)">--}}
+{{--                <img src="{{ asset('storage/static/photo/мягкая-игрушка-2-3.png') }}" class="img-thumbnail preview-img" alt="Превью 3" onclick="setMainImage(this)">--}}
+{{--            </div>--}}
 
+            <div class="col-md-2 d-flex flex-column align-items-center justify-content-start gap-3">
+                @foreach($product->images as $image)
+                    <img src="{{ asset($image->url) }}" class="img-thumbnail preview-img" alt="Превью 1" onclick="setMainImage(this)">
+                @endforeach
+
+            </div>
+            @php
+                $mainImage = $product->images->where('position', 0)->first();
+            @endphp
             <!-- Большое изображение -->
             <div class="col-md-4">
-                <img id="mainImage" src="{{ asset('storage/static/photo/мягкая-игрушка-2.png') }}" class="img-fluid main-image rounded" alt="Главное изображение">
+                @if($mainImage === null)
+                    <img id="mainImage" src="{{ asset('storage/static/photo/мягкая-игрушка-2.png') }}" class="img-fluid main-image rounded" alt="Главное изображение">
+                @else
+                    <img id="mainImage" src="{{ asset($mainImage->url) }}" class="img-fluid main-image rounded" alt="Главное изображение">
+
+                @endif
             </div>
 
             <!-- Правая часть с информацией -->

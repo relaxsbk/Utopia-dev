@@ -20,6 +20,11 @@
             'Публикация',
             ['label' => 'Действия', 'no-export' => true, 'width' => 20],
         ];
+
+
+//    if (session()->has("errors")) {
+//        dd(session()->get('errors'));
+//    }
     @endphp
 
     <div class="d-flex justify-content-end mb-3">
