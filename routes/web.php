@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminImageController;
 use App\Http\Controllers\Admin\AdminProductController;
+use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\FavoriteController;
 use App\Http\Controllers\User\OrderController;
@@ -33,7 +34,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
     Route::put('products/{product}/images', [AdminImageController::class, 'update'])->name('products.image.update');
     Route::delete('products/images/{image}', [AdminImageController::class, 'destroy'])->name('products.image.destroy');
-    // Добавьте другие маршруты для админки
+
+
+    Route::resource('users', AdminUserController::class);
 });
 
 

@@ -134,7 +134,7 @@
 
             <div class="col-md-2 d-flex flex-column align-items-center justify-content-start gap-3">
                 @foreach($product->images as $image)
-                    <img src="{{ asset($image->url) }}" class="img-thumbnail preview-img" alt="Превью 1" onclick="setMainImage(this)">
+                    <img src="{{ asset($image->url) }}" class="img-thumbnail preview-img" alt="Превью {{$product->name}}" onclick="setMainImage(this)">
                 @endforeach
 
             </div>

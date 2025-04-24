@@ -394,13 +394,8 @@ return [
             'submenu' => [
                 [
                     'text' => 'Посмотреть все',
-//                    'route' => 'admin.catalog.index',
+                    'route' => 'admin.users.index',
                     'icon' => 'fas fa-fw fa-check',
-                ],
-                [
-                    'text' => 'Неопубликованные',
-//                    'route' => 'admin.catalog.no.publish',
-                    'icon' => 'fas fa-fw fa-ghost',
                 ],
             ],
         ],

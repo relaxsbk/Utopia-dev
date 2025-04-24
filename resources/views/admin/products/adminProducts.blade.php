@@ -106,12 +106,6 @@
                             @foreach ($product->images as $image)
                                 <div class="mb-2 d-flex align-items-center justify-content-between gap-1">
                                     <img src="{{ asset($image->url) }}" style="width: 100px;" class="mr-3" alt="img">
-{{--                                    <input type="number" disabled name="position" min="0" max="2" value="{{ $image->position }}" class="form-control form-control-sm mr-2">--}}
-{{--                                    <form action="{{ route('admin.products.image.destroy', $image) }}" method="POST" class="form-inline ml-2">--}}
-{{--                                        @csrf--}}
-{{--                                        @method('DELETE')--}}
-{{--                                        <button type="submit" class="btn btn-sm btn-danger">Удалить</button>--}}
-{{--                                    </form>--}}
                                 </div>
                             @endforeach
                             <x-adminlte-input-file name="new_images[0]" label="Новое изображение (позиция 0)" />
