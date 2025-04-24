@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminCatalogController;
 use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminImageController;
+use App\Http\Controllers\Admin\AdminOrderController;
 use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\ProfileController;
@@ -37,6 +38,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
 
     Route::resource('users', AdminUserController::class);
+
+    Route::controller(AdminOrderController::class)->group(function () {
+        Route::get('/orders', 'index')->name('orders.index');
+        Route::get('/orders-new', 'new')->name('orders.new');
+        Route::put('/orders/{order}/status', 'updateStatus')->name('orders.updateStatus');
+    });
+
 });
 
 

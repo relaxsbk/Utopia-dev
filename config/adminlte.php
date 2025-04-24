@@ -313,13 +313,13 @@ return [
             'submenu' => [
                 [
                     'text' => 'Посмотреть все',
-                    'route' => 'admin.category.index',
+                    'route' => 'admin.orders.index',
                     'icon' => 'fas fa-fw fa-check',
                 ],
                 [
                     'text' => 'Только новые',
-                    'route' => 'admin.category.no.publish',
-                    'icon' => 'fas fa-fw fa-ghost',
+                    'route' => 'admin.orders.new',
+                    'icon' => 'fas fa-fw fa-bullhorn',
                 ],
             ],
         ],
@@ -408,8 +408,14 @@ return [
 //        ],
         ['header' => 'АККАУНТ'],
         [
+            'text' => 'Вернуться в магазин',
+            'url' => '/',
+            'icon' => 'fas fa-fw fa-arrow-left',
+        ],
+        [
             'text' => 'Выход',
-            'url' => 'admin/settings',
+//            'url' => 'admin/settings',
+            'route' => 'admin-logout',
             'icon' => 'fas fa-fw fa-power-off',
         ],
 

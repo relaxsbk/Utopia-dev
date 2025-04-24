@@ -44,4 +44,15 @@ class AuthenticatedSessionController extends Controller
 
         return redirect('/')->with(['success' => 'Вы успешно вышли из своего аккаунта']);
     }
+
+    public function logout(Request $request): RedirectResponse
+    {
+        Auth::guard('web')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/')->with(['success' => 'Вы успешно вышли из своего аккаунта']);
+    }
 }
