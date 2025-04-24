@@ -5,10 +5,15 @@ namespace Database\Seeders;
 use App\Models\Brand;
 use App\Models\Catalog;
 use App\Models\Category;
+use App\Models\OrderStatus;
+use App\Models\Payment;
 use App\Models\Product;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Database\Factories\OrderStatusFactory;
+use Database\Factories\PaymentFactory;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
@@ -18,6 +23,51 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        User::factory()->create([
+            'firstName' => 'Светлана',
+            'lastName' => 'Апкаева',
+            'email' => 'admin@admin.com',
+            'phone' => '9515484523',
+            'role' => 'admin',
+            'password' => Hash::make('admin123'),
+
+        ]);
+
+        $ordersData = [
+            ['label' => 'Новый', 'color' => '#00BFFF'],
+            ['label' => 'Выполнено', 'color' => '#008000'],
+            ['label' => 'Отменено', 'color' => '#FF0000'],
+            ['label' => 'В процессе сборки', 'color' => '#4B0082'],
+            ['label' => 'Ожидает', 'color' => '#00008B'],
+        ];
+
+
+        $status = collect();
+
+        foreach ($ordersData as $orderData) {
+            $status->push(
+                OrderStatus::factory()->create([
+                    'label' => $orderData['label'],
+                    'color' => $orderData['color'],
+                ])
+            );
+        }
+
+        $payments = [
+            ['label' => 'Безналичный расчёт'],
+            ['label' => 'Наличный'],
+        ];
+
+        $pay = collect();
+
+        foreach ($payments as $payment) {
+            $pay->push(
+                Payment::factory()->create([
+                    'label' => $payment['label'],
+                ])
+            );
+        }
+
         // Создаём бренды
         $brandsData = [
             ['name' => 'Жирафики', 'image' => '/storage/static/photo/brands/лого_жирафики.png', 'description' => 'Крутые жирафики'],
@@ -81,9 +131,6 @@ class DatabaseSeeder extends Seeder
 
         // User::factory(10)->create();
 
-//        User::factory()->create([
-//            'name' => 'Test User',
-//            'email' => 'test@example.com',
-//        ]);
+
 
 }
