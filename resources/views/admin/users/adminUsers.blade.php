@@ -82,12 +82,12 @@
 {{--                </x-adminlte-modal>--}}
 
                 {{-- Модалка удаления --}}
-                <x-adminlte-modal id="deleteModal-{{ $user->id }}" title="Удалить: {{ $user->name }}" theme="danger" icon="fas fa-trash">
-                    <form method="POST" id="delete-{{ $user->id }}" action="{{ route('admin.catalog.destroy', $user) }}">
+                <x-adminlte-modal id="deleteModal-{{ $user->id }}" title="Удалить: {{ $user->email }}" theme="danger" icon="fas fa-trash">
+                    <form method="POST" id="delete-{{ $user->id }}" action="{{ route('admin.users.destroy', $user) }}">
                         @csrf
                         @method('DELETE')
 
-                        <p>Вы уверены, что хотите удалить <strong>{{ $user->name }}</strong>?</p>
+                        <p>Вы уверены, что хотите удалить пользователя <strong>{{ $user->email }}</strong>?</p>
 
                         <x-slot name="footerSlot">
                             <x-adminlte-button label="Удалить" type="submit" theme="danger" form="delete-{{ $user->id }}" />
