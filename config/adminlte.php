@@ -400,39 +400,13 @@ return [
             ],
         ],
 
-//        ['header' => 'labels'],
+//        ['header' => 'СТАТУСЫ'],
 //        [
-//            'text' => 'important',
-//            'icon_color' => 'red',
-//            'url' => '#',
+//            'text' => 'Статусы заказа',
+//            'url' => 'admin/settings',
+//            'icon' => 'fas fa-fw fa-power-off',
 //        ],
-//        [
-//            'text' => 'warning',
-//            'icon_color' => 'yellow',
-//            'url' => '#',
-//        ],
-//        [
-//            'text' => 'information',
-//            'icon_color' => 'cyan',
-//            'url' => '#',
-//        ],
-        ['header' => 'СТАТУСЫ'],
-        [
-            'text' => 'Статусы заказа',
-            'url' => 'admin/settings',
-            'icon' => 'fas fa-fw fa-power-off',
-        ],
         ['header' => 'АККАУНТ'],
-//        [
-//            'text' => 'Профиль',
-//            'url' => 'admin/settings',
-//            'icon' => 'fas fa-fw fa-user',
-//        ],
-//        [
-//            'text' => 'Изменить пароль',
-//            'url' => 'admin/settings',
-//            'icon' => 'fas fa-fw fa-lock',
-//        ],
         [
             'text' => 'Выход',
             'url' => 'admin/settings',

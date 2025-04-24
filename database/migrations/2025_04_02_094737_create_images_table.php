@@ -18,7 +18,6 @@ return new class extends Migration
                 ->constrained('products')
                 ->cascadeOnDelete();
 
-            $table->string('name');
             $table->string('url');
             $table->integer('position')->default(0);
             $table->timestamps();

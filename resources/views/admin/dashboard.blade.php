@@ -50,7 +50,7 @@
         </div>
         <div class="col-md-6 col-xl-3 mb-4">
             <x-adminlte-card title="Пользователи" theme="indigo" icon="fas fa-users" class="h-100" footerSlot>
-                <a href="" class="stretched-link text-decoration-none text-dark">
+                <a href="{{route('admin.users.index')}}" class="stretched-link text-decoration-none text-dark">
                     Перейти к списку пользователей
                 </a>
             </x-adminlte-card>
