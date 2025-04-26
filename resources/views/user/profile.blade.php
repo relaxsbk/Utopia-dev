@@ -120,13 +120,13 @@
             object-fit: cover;
         }
 
-        /* Карточки товаров */
-        .card {
-            width: 100%; /* Растягивание на всю ширину колонки */
-            max-width: 200px; /* Ограничение максимального размера */
-            margin: 0 auto; /* Выравнивание по центру */
-            overflow: hidden; /* Обрезка лишнего */
-        }
+        /*!* Карточки товаров *!*/
+        /*.card {*/
+        /*    width: 100%; !* Растягивание на всю ширину колонки *!*/
+        /*    max-width: 200px; !* Ограничение максимального размера *!*/
+        /*    margin: 0 auto; !* Выравнивание по центру *!*/
+        /*    overflow: hidden; !* Обрезка лишнего *!*/
+        /*}*/
 
         /* Изображение в карточке */
         .card-img-top {
@@ -235,9 +235,10 @@
                                     <h1 class="modal-title fs-5" id="exampleModalLabel">Редактирование профиля</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                                <form id="edit" action="*" method="post">
+                                <form id="edit" action="{{route('profile.update')}}" method="post">
                                     <div class="modal-body text-start">
                                         @csrf
+                                        @method('PATCH')
                                         <div class="mb-3">
                                             <input style="padding: 14px" type="text" name="firstName" value="{{auth()->user()->firstName}}" class="form-control  @error('firstName') is-invalid @enderror" placeholder="Имя" required />
                                             @error('firstName')
@@ -298,7 +299,7 @@
                                 <a href="{{route('product.show', $product)}}" class="col-md-4 text-decoration-none text-black">
                                     <div class="favorite-toys-container">
                                         <div class="card-k">
-                                            <img src="{{asset('storage/static/photo/опыти и экспереметы.png')}}" class="card-k-img-top" alt="Игровые наборы">
+                                            <img src="{{asset($product->mainImage()->url)}}" class="card-k-img-top" alt="Игровые наборы">
                                             <div class="card-k-body">
                                                 <h6 class="card-k-title">{{$product->name}}</h6>
                                                 <div class="category">Категория: {{$product->category->name}}</div>
@@ -319,17 +320,63 @@
    @if($orders->isNotEmpty())
        <section class="container my-5">
            <h2 class="text-center mb-5 display-5 fw-bold">🛒 История заказов 🛒</h2>
-           <div class="d-flex justify-content-between flex-wrap">
-               @foreach ($orders as $order)
-                   <div class="card mb-3">
-                       <div class="card-body">
+           <div class="d-flex justify-content-center gap-2 flex-wrap">
+               @forelse ($orders as $order)
+                   <!-- Карточка заказа -->
+                   <div class="card mb-4 shadow-sm" style="width: 16rem; background: white; border-radius: 1.5rem;">
+                       <div class="card-body px-4">
                            <h5 class="card-title">Заказ №{{ $order->id }}</h5>
-                           <p class="card-text">Дата заказа: {{ $order->created_at->format('d.m.Y') }}</p>
-                           <p class="card-text">Статус: {{ $order->orderStatus->label }}</p> <!-- Если у вас есть статус заказа -->
-                           <p class="card-text">Сумма: {{ $order->total }} ₽</p>
+                           <p class="card-text">Дата: {{ $order->created_at->format('d.m.Y H:i') }}</p>
+                           <p class="card-text">Сумма: {{ number_format($order->total, 2, ',', ' ') }} ₽</p>
+                           <div class="d-flex justify-content-between ">
+                               <p class="card-text">
+                                   Статус:
+                               </p>
+                               <span style="background: {{ $order->orderStatus->color }}; height: 25px;" class="badge">{{ $order->orderStatus->label }}</span>
+                           </div>
+
+                           <button class="btn btn-outline-primary mt-2" data-bs-toggle="modal" data-bs-target="#orderModal{{ $order->id }}">
+                               Посмотреть детали
+                           </button>
                        </div>
                    </div>
-               @endforeach
+
+                   <!-- Модальное окно -->
+                   <div class="modal fade" id="orderModal{{ $order->id }}" tabindex="-1" aria-labelledby="orderModalLabel{{ $order->id }}" aria-hidden="true">
+                       <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                           <div class="modal-content">
+                               <div class="modal-header">
+                                   <h5 class="modal-title" id="orderModalLabel{{ $order->id }}">Детали заказа №{{ $order->id }}</h5>
+                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                               </div>
+                               <div class="modal-body">
+                                   @foreach ($order->items as $item)
+                                       <div class="d-flex align-items-center mb-3 border-bottom pb-2">
+                                           <img src="{{ asset($item->product->mainImage()->url) ?? ' '}}"
+                                                alt="{{ $item->product->name }}"
+                                                style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px;">
+                                           <div class="ms-3">
+                                               <h6 class="mb-0">{{ $item->product->name }}</h6>
+                                               <small>Кол-во: {{ $item->quantity }} шт.</small><br>
+                                               <small>Цена: {{ number_format($item->total, 2, ',', ' ') }} ₽</small>
+                                           </div>
+                                       </div>
+                                   @endforeach
+                               </div>
+                               <div class="modal-footer">
+                        <span class="me-auto fw-semibold">
+                            Итого: {{ number_format($order->total, 2, ',', ' ') }} ₽
+                        </span>
+                                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               @empty
+                   <div class="alert alert-info">
+                       У вас пока нет заказов.
+                   </div>
+               @endforelse
            </div>
        </section>
    @endif
@@ -343,10 +390,9 @@
                 @foreach($categories as $category)
                     <div class="col-md-4 col-lg-2">
                         <a href="{{route('categoryWithProducts', $category)}}" class="card custom-card text-black text-decoration-none">
-                            <img src="{{asset('storage/static/photo/кар-каталог-1.webp')}}" class="card-img-top" alt="Мягкие игрушки">
+                            <img src="{{asset($category->image)}}" class="card-img-top" alt="Мягкие игрушки">
                             <div class="card-body custom-body">
                                 <h3 class="card-title">{{$category->name}}</h3>
-
                             </div>
                         </a>
                     </div>

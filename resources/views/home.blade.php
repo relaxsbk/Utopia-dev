@@ -562,11 +562,6 @@
                         <img src="{{asset($brand->image)}}" alt="{{$brand->name}}" class="brand-logo" />
                     @endforeach
 
-{{--                    <img src="{{asset('/storage/static/photo/лого степ.png')}}" alt="Step Puzzle" class="brand-logo" />--}}
-{{--                    <img src="{{asset('/storage/static/photo/лого норпалис.png/')}}" alt="Нордпласт" class="brand-logo" />--}}
-{{--                    <img src="{{asset('/storage/static/photo/лого умка.png')}}" alt="Умка" class="brand-logo" />--}}
-{{--                    <img src="{{asset('/storage/static/photo/лого жирафики.png')}}" alt="Жирафики" class="brand-logo" />--}}
-{{--                    <img src="{{asset('/storage/static/photo/лого lori.png')}}" alt="LORI" class="brand-logo" />--}}
                 </div>
             </div>
         </div>
@@ -578,53 +573,22 @@
     <section class="container my-5">
         <h2 class="text-center mb-4"> 📌 Популярные категории 📌</h2>
         <div class="row text-center justify-content-center">
-           @foreach($categories as $category)
-                <div class="col-md-4 col-lg-2">
-                    <a href="{{route('categoryWithProducts', $category)}}" class="card custom-card">
-                        <img src="{{asset('/storage/static/photo/лего-дом.png')}}" class="card-img-top" alt="Lego">
-                        <div class="card-body custom-body">
-                            <h3 class="card-title text-black text-center text-wrap text-break">{{$category['name']}}</h3>
-                        </div>
-                    </a>
-                </div>
-           @endforeach
-{{--            <div class="col-md-4 col-lg-2">--}}
-{{--                <div class="card custom-card">--}}
-{{--                    <img src="{{asset('/storage/static/photo/робот-машина.png')}}" class="card-img-top" alt="Роботы">--}}
-{{--                    <div class="card-body custom-body">--}}
-{{--                        <h3 class="card-title">Интерактивные игрушки</h3>--}}
-{{--                        <p class="card-text">Интерактивные игрушки</p>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--            <div class="col-md-4 col-lg-2">--}}
-{{--                <div class="card custom-card">--}}
-{{--                    <img src="{{asset('/storage/static/photo/барби (2).png')}}" class="card-img-top" alt="Барби">--}}
-{{--                    <div class="card-body custom-body">--}}
-{{--                        <h3 class="card-title">Любимые куклы</h3>--}}
-{{--                        <p class="card-text">Любимые куклы</p>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--            <div class="col-md-4 col-lg-2">--}}
-{{--                <div class="card custom-card">--}}
-{{--                    <img src="photo/шашаки.png" class="card-img-top" alt="Игровые наборы">--}}
-{{--                    <img src="{{asset('/storage/static/photo/шашаки.png')}}" class="card-img-top" alt="Игровые наборы">--}}
-{{--                    <div class="card-body custom-body">--}}
-{{--                        <h3 class="card-title">Логические игры</h3>--}}
-{{--                        <p class="card-text">Логическая игра</p>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--            <div class="col-md-4 col-lg-2">--}}
-{{--                <div class="card custom-card">--}}
-{{--                    <img src="{{asset('/storage/static/photo/дом интерьер.png')}}" class="card-img-top" alt="Конструктор">--}}
-{{--                    <div class="card-body custom-body">--}}
-{{--                        <h3 class="card-title">Интерьерный<br> конструктор</h3>--}}
-{{--                        <p class="card-text">Создавай уютные домики</p>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
+           @if($categories->isEmpty())
+                <h2>Категории пока не выводятся</h2>
+           @else
+
+                @foreach($categories as $category)
+                    <div class="col-md-4 col-lg-2">
+                        <a href="{{route('categoryWithProducts', $category)}}" class="card custom-card">
+                            <img src="{{asset($category->image)}}" class="card-img-top" alt="{{$category->name}}">
+                            <div class="card-body custom-body">
+                                <h3 class="card-title text-black text-center text-wrap text-break">{{$category->name}}</h3>
+                            </div>
+                        </a>
+                    </div>
+                @endforeach
+           @endif
+
         </div>
     </section>
 
@@ -664,6 +628,7 @@
                 <button type="button" data-bs-target="#discountCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
             </div>
             <div class="carousel-inner">
+
                 <div class="carousel-item active">
                     <img src="{{asset('/storage/static/photo/сельский домик.png')}}" class="d-block w-100" alt="Сельский домик">
                     <div class="carousel-caption d-none d-md-block">
@@ -695,6 +660,7 @@
                     </div>
                 </div>
             </div>
+
             <button class="carousel-control-prev" type="button" data-bs-target="#discountCarousel" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Предыдущий</span>

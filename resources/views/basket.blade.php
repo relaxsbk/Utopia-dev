@@ -43,7 +43,7 @@
                             <div class="card mb-3" data-price="{{ $item->product->priceDiscount() }}">
                                 <div class="row g-0 align-items-center">
                                     <div class="col-md-3">
-                                        <img src="{{ asset('storage/static/photo/мягкая-игрушка-2-1.png') }}"
+                                        <img src="{{ asset($item->product->mainImage()->url) }}"
                                              class="img-fluid rounded-start p-2"
                                              style="width: auto; height: 10rem"
                                              alt="{{ $item->product->name }}">

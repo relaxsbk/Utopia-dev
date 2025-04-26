@@ -81,7 +81,6 @@ class AdminProductController extends Controller
             $product->images()->create([
                 'url' => "storage/$path",
                 'position' => $position,
-                'name' => $validated['name'],
             ]);
         }
 
@@ -133,7 +132,6 @@ class AdminProductController extends Controller
                     $product->images()->create([
                         'url' => '/storage/' . $path,
                         'position' => $position,
-                        'name' => $validated['name'],
                     ]);
                 }
             }
