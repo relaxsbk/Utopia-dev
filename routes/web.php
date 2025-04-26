@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\User\FavoriteController;
 use App\Http\Controllers\User\OrderController;
 use App\Http\Controllers\Views\CartController;
@@ -30,7 +31,9 @@ Route::controller(ProductController::class)->group(function () {
     Route::get('/product/{product:slug}', 'show')->name('product.show');
 });
 
-
+Route::controller(ReviewController::class)->middleware(['auth'])->group(function (){
+    Route::post('/review/create','store')->name('review.create');
+});
 
 Route::controller(FavoriteController::class)->middleware(['auth.message'])->group(function () {
     Route::post('/favorite/add/{product:id}', 'addToFavorite')->name('addToFavorite');

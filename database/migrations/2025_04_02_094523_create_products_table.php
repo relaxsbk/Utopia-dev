@@ -24,8 +24,9 @@ return new class extends Migration
 
             $table->string('name');
             $table->string('slug')->unique();
-            $table->text('description');
-            $table->integer('price');
+            $table->text('description')->nullable();
+            $table->integer('price')->default(0);
+            $table->double('rating')->default(0);
             $table->integer('discount')->default(0);
             $table->integer('quantity')->default(0);
             $table->boolean('published')->default(false);

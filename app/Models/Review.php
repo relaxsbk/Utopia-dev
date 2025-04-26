@@ -12,7 +12,7 @@ class Review extends Model
     use HasFactory;
 
     protected $fillable = [
-        'rating', 'review'
+        'rating', 'review', 'product_id'
     ];
 
     public function user(): BelongsTo

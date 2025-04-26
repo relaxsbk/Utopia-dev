@@ -14,12 +14,16 @@ class Product extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'slug', 'description', 'price', 'discount', 'quantity', 'published', 'category_id', 'brand_id'
+        'name', 'slug', 'description', 'price', 'discount','rating', 'quantity', 'published', 'category_id', 'brand_id'
     ];
 
     public function scopePublished($query)
     {
         return $query->where('published', 1);
+    }
+    public function formattedRating(): ?string
+    {
+        return $this->rating !== null ? number_format($this->rating, 1) : null;
     }
 
     public function shortDescription(): string

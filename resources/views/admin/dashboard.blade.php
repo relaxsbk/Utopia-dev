@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-md-6 col-xl-3 mb-4">
             <x-adminlte-card title="Заказы" theme="primary" icon="fas fa-scroll" class="h-100" footerSlot>
-                <a href="{{route('admin.catalog.index')}}" class="stretched-link text-decoration-none text-dark">
+                <a href="{{route('admin.orders.index')}}" class="stretched-link text-decoration-none text-dark">
                     Перейти к списку каталогов
                 </a>
             </x-adminlte-card>

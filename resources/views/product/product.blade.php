@@ -125,12 +125,6 @@
 
     <div class="container product-page mt-5">
         <div class="row">
-            <!-- Левый столбец: Превьюшки -->
-{{--            <div class="col-md-2 d-flex flex-column align-items-center justify-content-start gap-3">--}}
-{{--                <img src="{{ asset('storage/static/photo/мягкая-игрушка-2-1.png') }}" class="img-thumbnail preview-img" alt="Превью 1" onclick="setMainImage(this)">--}}
-{{--                <img src="{{ asset('storage/static/photo/мягкая-игрушка-2-2.png') }}" class="img-thumbnail preview-img" alt="Превью 2" onclick="setMainImage(this)">--}}
-{{--                <img src="{{ asset('storage/static/photo/мягкая-игрушка-2-3.png') }}" class="img-thumbnail preview-img" alt="Превью 3" onclick="setMainImage(this)">--}}
-{{--            </div>--}}
 
             <div class="col-md-2 d-flex flex-column align-items-center justify-content-start gap-3">
                 @foreach($product->images as $image)
@@ -168,6 +162,21 @@
                     </div>
                 @endif
 
+                <div class="d-flex align-items-center gap-3 mb-3">
+                    <label for="quantity">⭐</label>
+                    <span class="text-muted">
+                @if($product->rating !== 0.0)
+                            {{ $product->formattedRating() }}
+                @else
+                            Нет оценок
+                @endif
+                </span>
+
+                    <label for="quantity">💭</label>
+                    <span class="text-muted">
+                {{ $product->reviews->count() }}
+                </span>
+                </div>
                 <div class="d-flex align-items-center mb-3">
                     <label for="quantity" class="me-2">Количество:</label>
                     <span class="text-muted ms-3">{{$product->quantity}} в наличии</span>
@@ -231,6 +240,73 @@
                         {{$product->description}}
                     </p>
                 </div>
+
+
+                <div class="mt-5">
+                   <div class="justify-content-start align-items-center gap-2">
+                       <h2 class="mb-3">Отзывы</h2>
+                      @if(auth()->check())
+                           <div class="mb-4">
+                               <button class="btn btn-sm button" data-bs-toggle="modal" data-bs-target="#reviewModal">
+                                   Оставить отзыв
+                               </button>
+                           </div>
+                           <div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel" aria-hidden="true">
+                               <div class="modal-dialog">
+                                   <div class="modal-content">
+                                       <form method="POST" action="{{route('review.create')}}">
+                                           @csrf
+                                           <div class="modal-header">
+                                               <h5 class="modal-title" id="reviewModalLabel">Оставить отзыв</h5>
+                                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                                           </div>
+                                           <div class="modal-body">
+                                               <div class="mb-3">
+                                                   <label for="rating" class="form-label">Оценка</label>
+                                                   <input name="product_id" type="hidden" value="{{$product->id}}">
+                                                   <select name="rating" id="rating" class="form-select" required>
+                                                       <option value="">Выберите оценку</option>
+                                                       @for ($i = 5; $i >= 1; $i--)
+                                                           <option value="{{ $i }}">{{ $i }} ⭐</option>
+                                                       @endfor
+                                                   </select>
+                                               </div>
+                                               <div class="mb-3">
+                                                   <label for="content" class="form-label">Комментарий</label>
+                                                   <textarea name="review" id="content" class="form-control" rows="4" required></textarea>
+                                               </div>
+                                           </div>
+                                           <div class="modal-footer">
+                                               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                                               <button type="submit" class="btn btn-primary">Отправить</button>
+                                           </div>
+                                       </form>
+                                   </div>
+                               </div>
+                           </div>
+                      @endif
+                   </div>
+
+                    @forelse ($product->reviews as $review)
+                        <div class="border rounded p-3 mb-3">
+                            <div class="d-flex justify-content-between mb-2">
+                                <div class="fw-bold">
+                                    {{ $review->user->firstName }} {{ $review->user->lastName }}  ⭐ {{$review->rating}}
+                                </div>
+                                <div class="text-muted small">
+                                    {{ $review->created_at->format('d.m.Y') }}
+                                </div>
+                            </div>
+
+                            <div>
+                                {{ $review->review }}
+                            </div>
+                        </div>
+                    @empty
+                        <p>Отзывов пока нет. Будьте первым!</p>
+                    @endforelse
+                </div>
+
                 <button class="button" onclick="goBack()">⟵ Вернуться назад</button>
 
                 <script>
