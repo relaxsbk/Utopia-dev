@@ -215,12 +215,16 @@
     <div class="container  pt-5 ">
         <div class="row justify-content-center">
             <div class="col-md-8 profile-card text-center">
+
                 <h4 class="fw-bold">{{auth()->user()->firstName}} {{auth()->user()->lastName}}</h4>
                 <p class="text-muted">{{auth()->user()->email}}</p>
                 <p class="text-muted">{{auth()->user()->phone}}</p>
+                @if(!auth()->user()->isUser())
+                    <a href="{{route('admin.dashboard')}}" class=" edit-profile-button text-decoration-none">Перейти в панель администратора</a>
+                @endif
+
                 <div class="d-flex justify-content-center gap-2">
-{{--                                    <button class="edit-profile-button">Перейти в панель администратора</button>--}}
-{{--                    <button class="edit-profile-button">Редактировать профиль</button>--}}
+
                     <button type="button" class="edit-profile-button" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Редактировать профиль
                     </button>
@@ -282,6 +286,7 @@
                         <button type="submit" class="edit-profile-button">Выход</button>
                     </form>
                 </div>
+
 {{--                <div class="bonus-block mb-4">🎁 Ваши бонусы: <span class="text-success">1 240</span> баллов</div>--}}
                 <div class="mt-10">
                     <h5 class="mb-3 fw-bolder">Любимые игрушки</h5>

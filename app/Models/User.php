@@ -13,6 +13,8 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    const ADMIN = 'admin';
+    const USER = 'user';
     /**
      * The attributes that are mass assignable.
      *
@@ -49,6 +51,16 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->role === self::ADMIN;
+    }
+
+    public function isUser(): bool
+    {
+        return $this->role === self::USER;
     }
 
     public function favorite(): HasOne
