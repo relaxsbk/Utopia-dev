@@ -152,7 +152,7 @@
                         <x-product-card :product="$product"/>
                     @empty
                         <div class="col-12 text-center">
-                            <p>Товары не найдены.</p>
+                            <p class="fs-3">Товары не найдены.</p>
                         </div>
                     @endforelse
                 </div>

@@ -168,29 +168,10 @@
     <div class="cards-wrapper">
         @foreach($categories as $category)
             <a href="{{route('categoryWithProducts', $category)}}" class="card custom-card">
-                <img src="{{asset('storage/static/photo/кар-каталог-1.webp')}}" alt="{{$category->name}}">
+                <img src="{{asset($category->image)}}" alt="{{$category->name}}">
                 <div class="card-footer">{{$category->name}}</div>
             </a>
         @endforeach
-{{--        <div class="card custom-card">--}}
-{{--            <img src="{{asset('storage/static/photo/кар-каталог-2.webp')}}" alt="Развивающие игрушки">--}}
-{{--            <div class="card-footer">Развивающие игрушки</div>--}}
-{{--        </div>--}}
-{{--        <div class="card custom-card">--}}
-{{--            <img src="{{asset('storage/static/photo/кар-каталог-3.webp')}}" alt="Музыкальные игрушки">--}}
-{{--            <div class="card-footer">Музыкальные игрушки</div>--}}
-{{--        </div>--}}
-{{--        <div class="card custom-card">--}}
-{{--            <img src="{{asset('storage/static/photo/кар-каталог-4.webp')}}" alt="Технические игрушки">--}}
-{{--            <div class="card-footer">Технические игрушки</div>--}}
-{{--        </div>--}}
-{{--        <div class="card custom-card">--}}
-{{--            <img src="{{asset('storage/static/photo/кар-каталог-5.webp')}}" alt="Подвижные игры">--}}
-{{--            <div class="card-footer">Подвижные игры</div>--}}
-{{--        </div>--}}
-{{--        <div class="card custom-card">--}}
-{{--            <img src="{{asset('storage/static/photo/кар-каталог-6.webp')}}" alt="Игровой набор">--}}
-{{--            <div class="card-footer">Игровой набор</div>--}}
-{{--        </div>--}}
+
     </div>
 @endsection

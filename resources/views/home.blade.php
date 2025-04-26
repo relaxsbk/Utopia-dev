@@ -619,58 +619,54 @@
     <!-- Секция скидок -->
     <section class="container my-5">
         <h2 class="text-center">🔥 Наборы со скидкой 🔥</h2>
-        <div id="discountCarousel" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#discountCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#discountCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#discountCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                <button type="button" data-bs-target="#discountCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
-                <button type="button" data-bs-target="#discountCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
-            </div>
-            <div class="carousel-inner">
 
-                <div class="carousel-item active">
-                    <img src="{{asset('/storage/static/photo/сельский домик.png')}}" class="d-block w-100" alt="Сельский домик">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>"Сельский домик"</h5>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="{{asset('/storage/static/photo/робо-пёс.png')}}" class="d-block w-100" alt="Робо-пёс">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>"Дай лапу"</h5>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="{{asset('/storage/static/photo/пластилин_скидка.png')}}" class="d-block w-100" alt="Магический пластилин">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>"Магический пластилин"</h5>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="{{asset('/storage/static/photo/машина_скидка.png')}}" class="d-block w-100" alt="Гоночная машина">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>"Гоночная машина"</h5>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="{{asset('/storage/static/photo/шаттл_скидка.png')}}" class="d-block w-100" alt="Космический шаттл">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>"Космический шаттл"</h5>
-                    </div>
-                </div>
-            </div>
+        @if($productsDiscount->isNotEmpty())
+            <div id="discountCarousel" class="carousel slide" data-bs-ride="carousel">
 
-            <button class="carousel-control-prev" type="button" data-bs-target="#discountCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Предыдущий</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#discountCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Следующий</span>
-            </button>
-        </div>
+                <!-- Индикаторы -->
+                <div class="carousel-indicators">
+                    @foreach($productsDiscount as $index => $product)
+                        <button type="button" data-bs-target="#discountCarousel" data-bs-slide-to="{{ $index }}"
+                                @class([
+                                    'active' => $index === 0,
+                                ])
+                                aria-current="{{ $index === 0 ? 'true' : 'false' }}"
+                                aria-label="Slide {{ $index + 1 }}">
+                        </button>
+                    @endforeach
+                </div>
+
+                <!-- Слайды -->
+                <div class="carousel-inner">
+                    @foreach($productsDiscount as $index => $product)
+                        <a href="{{route('product.show', $product)}}" class="carousel-item text-decoration-none @if($index === 0) active @endif">
+                            @if($product->mainImage())
+                                <img src="{{ asset('storage/' . $product->mainImage()->url) }}" class="d-block w-100" alt="{{ $product->name }}">
+                            @else
+                                <img src="{{ asset('/storage/static/photo/шаттл_скидка.png') }}" class="d-block w-100" alt="Нет изображения">
+                            @endif
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>{{ $product->name }}</h5>
+                            </div>
+                        </a>
+                    @endforeach
+                </div>
+
+                <!-- Кнопки навигации -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#discountCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Предыдущий</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#discountCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Следующий</span>
+                </button>
+            </div>
+        @else
+            <p class="text-center mt-4">Нет товаров со скидкой 😔</p>
+        @endif
     </section>
+
 
 
     <!-- Приложение -->

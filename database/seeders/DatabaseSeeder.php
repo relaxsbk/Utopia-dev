@@ -7,11 +7,8 @@ use App\Models\Catalog;
 use App\Models\Category;
 use App\Models\OrderStatus;
 use App\Models\Payment;
-use App\Models\Product;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Database\Factories\OrderStatusFactory;
-use Database\Factories\PaymentFactory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -110,7 +107,7 @@ class DatabaseSeeder extends Seeder
 
             // Категории для каждого каталога
             for ($i = 1; $i <= 3; $i++) {
-                $category = Category::create([
+                Category::create([
                     'name' => $catalog->name . " Категория $i",
                     'slug' => $catalog->slug . "-category-$i",
                     'description' => "Описание категории $i",
@@ -119,11 +116,7 @@ class DatabaseSeeder extends Seeder
                     'catalog_id' => $catalog->id,
                 ]);
 
-                // Продукты для каждой категории
-                Product::factory(5)->create([
-                    'category_id' => $category->id,
-                    'brand_id' => $brands->random()->id,
-                ]);
+
             }
         }
     }
