@@ -26,12 +26,14 @@ class HomeController extends Controller
             ->get();
 
         $productsDiscount = Product::query()
-            ->select('name', 'slug')
             ->published()
             ->where('discount', '>', 0)
+            ->with('mainImageHas')
             ->take(5)
             ->get();
 
+
+//        dd($productsDiscount->images());
 
         return view('home', [
             'categories' => MiniCategoryResource::collection($categories),

@@ -57,6 +57,7 @@ class Product extends Model
         return $this->belongsTo(Brand::class);
      }
 
+
      public function images(): HasMany
      {
          return $this->hasMany(Image::class);
@@ -72,4 +73,8 @@ class Product extends Model
         return $this->images()->first();
     }
 
+    public function mainImageHas(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(Image::class)->where('position', 0); // берём самое первое изображение
+    }
 }

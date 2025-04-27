@@ -640,8 +640,9 @@
                 <div class="carousel-inner">
                     @foreach($productsDiscount as $index => $product)
                         <a href="{{route('product.show', $product)}}" class="carousel-item text-decoration-none @if($index === 0) active @endif">
-                            @if($product->mainImage())
-                                <img src="{{ asset('storage/' . $product->mainImage()->url) }}" class="d-block w-100" alt="{{ $product->name }}">
+                            @if($product->mainImageHas)
+
+                                <img src="{{ asset($product->mainImageHas->url) }}" class="d-block w-100" alt="{{ $product->name }}">
                             @else
                                 <img src="{{ asset('/storage/static/photo/шаттл_скидка.png') }}" class="d-block w-100" alt="Нет изображения">
                             @endif
