@@ -222,5 +222,48 @@
             </div>
         </div>
     </section>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const phoneInput = document.querySelector('input[name="phone"]');
 
+            function maskPhone(event) {
+                let keyCode;
+                event.keyCode && (keyCode = event.keyCode);
+                let pos = phoneInput.selectionStart;
+
+                if (pos < 3) event.preventDefault();
+
+                let matrix = "+7 (___) ___-__-__",
+                    i = 0,
+                    def = matrix.replace(/\D/g, ""),
+                    val = phoneInput.value.replace(/\D/g, ""),
+                    newValue = matrix.replace(/[_\d]/g, function (a) {
+                        return i < val.length ? val.charAt(i++) : a;
+                    });
+
+                i = newValue.indexOf("_");
+                if (i !== -1) {
+                    newValue = newValue.slice(0, i);
+                }
+
+                let reg = matrix.substr(0, phoneInput.value.length).replace(/_+/g,
+                    function (a) {
+                        return "\\d{1," + a.length + "}";
+                    }).replace(/[+()]/g, "\\$&");
+                reg = new RegExp("^" + reg + "$");
+
+                if (!reg.test(phoneInput.value) || phoneInput.value.length < 5 || keyCode > 47 && keyCode < 58) {
+                    phoneInput.value = newValue;
+                }
+                if (event.type === "blur" && phoneInput.value.length < 5) {
+                    phoneInput.value = "";
+                }
+            }
+
+            phoneInput.addEventListener("input", maskPhone, false);
+            phoneInput.addEventListener("focus", maskPhone, false);
+            phoneInput.addEventListener("blur", maskPhone, false);
+            phoneInput.addEventListener("keydown", maskPhone, false);
+        });
+    </script>
 @endsection
